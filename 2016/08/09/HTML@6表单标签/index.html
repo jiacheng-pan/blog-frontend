@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>HTML@6表单标签 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="常用标签表单标签表单标签是HTML中非常重要的标签，可以用来上传信息而且在HTML5中有扩展了很多input类型的表单标签，是和用户进行信息交互的重要媒介。但是表单标签家族人员众多，如果要讲完，还是挺费劲的，所以我也只是简述而已。 form标签一般来说，会把&amp;lt;form&amp;gt;标签放在表单的最外面，因为一般而言，表单数据都会发送给后台，让后台进行处理，那么就需要定义，后台的地址是什么，用什么方">
+<meta name="keywords" content="前端,笔记,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML@6表单标签">
+<meta property="og:url" content="http://jackieanxis.github.io/2016/08/09/HTML@6表单标签/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="常用标签表单标签表单标签是HTML中非常重要的标签，可以用来上传信息而且在HTML5中有扩展了很多input类型的表单标签，是和用户进行信息交互的重要媒介。但是表单标签家族人员众多，如果要讲完，还是挺费劲的，所以我也只是简述而已。 form标签一般来说，会把&amp;lt;form&amp;gt;标签放在表单的最外面，因为一般而言，表单数据都会发送给后台，让后台进行处理，那么就需要定义，后台的地址是什么，用什么方">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML@6表单标签">
+<meta name="twitter:description" content="常用标签表单标签表单标签是HTML中非常重要的标签，可以用来上传信息而且在HTML5中有扩展了很多input类型的表单标签，是和用户进行信息交互的重要媒介。但是表单标签家族人员众多，如果要讲完，还是挺费劲的，所以我也只是简述而已。 form标签一般来说，会把&amp;lt;form&amp;gt;标签放在表单的最外面，因为一般而言，表单数据都会发送给后台，让后台进行处理，那么就需要定义，后台的地址是什么，用什么方">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-HTML@6表单标签" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML@6表单标签
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><p>表单标签是HTML中非常重要的标签，可以用来上传信息而且在HTML5中有扩展了很多input类型的表单标签，是和用户进行信息交互的重要媒介。但是表单标签家族人员众多，如果要讲完，还是挺费劲的，所以我也只是简述而已。</p>
+<h4 id="form标签"><a href="#form标签" class="headerlink" title="form标签"></a><code>form</code><strong>标签</strong></h4><p>一般来说，会把<code>&lt;form&gt;</code>标签放在表单的最外面，因为一般而言，表单数据都会发送给后台，让后台进行处理，那么就需要定义，后台的地址是什么，用什么方式传给后台（POST or GET?）等等。总而言之，如果把表单看成一封信，那么form标签就是它的信封，标注着收件地址，怎么寄送等等。挂出W3School的详细信息：<a href="http://www.w3school.com.cn/tags/tag_form.asp" target="_blank" rel="noopener">HTML form标签</a>。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/login"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--action: 后台地址， method: 提交方式--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这里面就放入表单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>action属性表示的是后台地址，method就是传输方式（POST or GET）。具体想知道POST和GET传给后台之间有什么区别，以后我也会详细推出一篇笔记来阐述两者区别，现在暂时先看别人的日志：<br><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="noopener">W3School：HTTP 方法：GET 对比 POST</a><br><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">hyddd：浅谈HTTP中Get与Post的区别</a><br><a href="http://blog.csdn.net/gideal_wang/article/details/4316691" target="_blank" rel="noopener">gideal_wang：HTTP POST GET 本质区别详解</a></p>
+<h4 id="fieldset标签"><a href="#fieldset标签" class="headerlink" title="fieldset标签"></a><code>fieldset</code><strong>标签</strong></h4><p>这个标签是用来划分表单的，将不同表单进行分组，比如填写个人基本信息的相关表单放在一个<code>&lt;fieldset&gt;</code>标签，填写个人教育经历的放在另一个。这个没什么好讲的……</p>
+<h4 id="legend标签"><a href="#legend标签" class="headerlink" title="legend标签"></a><code>legend</code><strong>标签</strong></h4><p>通常被用来配合<code>&lt;fieldset&gt;</code>标签使用，是用来表示一个filedset的标题信息的。</p>
+<h4 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a><code>input</code><strong>标签</strong></h4><p>input标签千变万化，可以用来作为输入框，按钮，单选框等等等等，这都和它的<strong>type</strong>属性息息相关，不同的type就能变幻出不同的形态，当然我还是贴出这个标签的权威解答：<a href="http://www.w3school.com.cn/tags/tag_input.asp" target="_blank" rel="noopener">HTML input标签</a>。</p>
+<ul>
+<li><p><strong>type属性：</strong> 变换不同形态<br>type属性有以下这些值，当然，你如果想有更多的体验，可以访问→<a href="http://www.w3school.com.cn/tags/att_input_type.asp" target="_blank" rel="noopener">HTML input标签的type属性</a>，自己写代码试试看：</p>
+<ul>
+<li><p>text：普通的单行输入框</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"在此处输入试试"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="text" placeholder="在此处输入试试"></li>
+</ul>
+</li>
+<li><p>password：密码输入框</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"在此处输入密码"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="password" placeholder="在此处输入密码"></li>
+</ul>
+</li>
+<li><p>radio：单选框</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"male"</span>/&gt;</span>男</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"female"</span>/&gt;</span>女</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="radio" name="sex" value="male">男 <input type="radio" name="sex" value="female">女</li>
+</ul>
+</li>
+<li><p>checkbox：多选框</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项一</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项二</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项三</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="checkbox">选项一 <input type="checkbox">选项二 <input type="checkbox">选项三</li>
+</ul>
+</li>
+<li><p>file：文件上传</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="file"></li>
+</ul>
+</li>
+<li>hidden： 隐藏某个input标签<br>隐藏字段对于用户是不可见的。隐藏字段通常会存储一个默认值，它们的值也可以由 JavaScript 进行修改。</li>
+<li><p>button：没有任何反应的按钮</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="button"></li>
+</ul>
+</li>
+<li><p>submit：提交按钮，是用来提交整个表单的数据</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="submit"></li>
+</ul>
+</li>
+<li><p>image：定义图像形式的提交按钮。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"image"</span> <span class="attr">src</span>=<span class="string">"http://o6vut8vrh.bkt.clouddn.com/16-8-13/76798647.jpg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="image" src="http://o6vut8vrh.bkt.clouddn.com/16-8-13/76798647.jpg"></li>
+</ul>
+</li>
+<li><p>reset：重置按钮，重置表单所有数据</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"在此处输入试试"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"在此处输入密码"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项一</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项二</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>选项三</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：（可以先输入信息，点击reset之后清除）<form><br><input type="text" placeholder="在此处输入试试"><br><input type="password" placeholder="在此处输入密码"><br><input type="checkbox">选项一<input type="checkbox">选项二<input type="checkbox">选项三<br><input type="reset"><br></form>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>name属性：</strong> input元素的名称<br>提交表单时对表单数据进行标识，因为你把数据提交到后台后，肯定要对每个表单数据都有一个标记，也就是他们的名字，这也就是name属性的意义。</p>
+</li>
+<li><p><strong>value属性：</strong> input元素的值<br>当然，你经常有需要会让某些input元素有一些预设值，或者让某些input元素有值能提交，比如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"male"</span>/&gt;</span>男</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"female"</span>/&gt;</span>女</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>placeholder属性：</strong> 输入框的提示信息<br>规定帮助用户填写输入字段的提示。当然非输入字段是没用的……</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"在此处输入试试"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<input type="text" placeholder="在此处输入试试"></li>
+</ul>
+</li>
+<li><p><strong>checked属性：</strong> 使带有这个属性的input标签默认处于选中状态</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"male"</span>/&gt;</span>男</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"female"</span> <span class="attr">checked</span>/&gt;</span>女</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<form><br><input type="radio" name="sex" value="male">男<br><input type="radio" name="sex" value="female" checked>女<br></form>
+</li>
+</ul>
+</li>
+<li><p><strong>disabled属性：</strong> 禁用该标签<br><strong><span style="color:red">提示：</span></strong>disabled属性不能和type=”hidden”一起使用。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"male"</span>/&gt;</span>男</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"female"</span> <span class="attr">checked</span> <span class="attr">disabled</span>/&gt;</span>女</span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果：<form><br><input type="radio" name="sex" value="male">男<br><input type="radio" name="sex" value="female" checked disabled>女<br></form>
+</li>
+</ul>
+</li>
+<li><p>其他还有很多有用的属性：<strong>autofocus</strong>，<strong>readonly</strong>，<strong>multiple</strong>，<strong>required</strong>等等……可以访问<a href="http://www.w3school.com.cn/tags/tag_input.asp" target="_blank" rel="noopener">HTML input标签</a>。</p>
+</li>
+</ul>
+<h4 id="select标签"><a href="#select标签" class="headerlink" title="select标签"></a><code>select</code><strong>标签</strong></h4><p>同样先贴上W3School的链接：<a href="http://www.w3school.com.cn/tags/tag_select.asp" target="_blank" rel="noopener">HTML select标签</a><br>下拉菜单，有几个需要配合select一起使用的标签：</p>
+<ul>
+<li>option：也就是菜单选项</li>
+<li>optgroup：可以对option选项进行分组<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"delivery"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">optgroup</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>快递<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>EMS<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">optgroup</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span> <span class="attr">selected</span>&gt;</span>平邮<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果：<select id="delivery"><br>    <optgroup><br>        <option value="0">快递</option><br>        <option value="1">EMS</option><br>    </optgroup><br>    <option value="2" selected>平邮</option><br></select></p>
+<h4 id="textarea标签"><a href="#textarea标签" class="headerlink" title="textarea标签"></a><code>textarea</code><strong>标签</strong></h4><p>textarea就是多行的文本输入控件。贴上链接：<a href="http://www.w3school.com.cn/tags/tag_textarea.asp" target="_blank" rel="noopener">HTML textarea标签</a><br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">rows</span>=<span class="string">"3"</span> <span class="attr">cols</span>=<span class="string">"20"</span>&gt;</span></span><br><span class="line">	在w3school，你可以找到你所需要的所有的网站建设教程。</span><br><span class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><textarea rows="3" cols="20">在w3school，你可以找到你所需要的所有的网站建设教程。</textarea><br>textarea有几个较为重要的属性，简单讲解：</p>
+<ul>
+<li>rows：文本输入框可见的行数</li>
+<li>cols：文本输入框可见的列数</li>
+<li>其他还有：autofocus，readonly，disabled，placeholder，required等等</li>
+</ul>
+<h4 id="button标签"><a href="#button标签" class="headerlink" title="button标签"></a><code>button</code><strong>标签</strong></h4><p>button标签就是按钮标签，<a href="http://www.w3school.com.cn/tags/tag_button.asp" target="_blank" rel="noopener">HTML button标签</a>。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"alert('hello!')"</span>&gt;</span>click here!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果：<button onclick="alert('hello!')">click here!</button><br>这个button标签比<code>&lt;input type=&quot;button&quot;&gt;</code>提供了更为强大的功能和更丰富的内容。</p>
+<h4 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a><code>label</code><strong>标签</strong></h4><p><code>&lt;label&gt;</code>标签为 input 元素定义标注（标记）。可以用label的for属性绑定另外一个元素，只要label的for属性的值和另外一个元素的id相同，此时如果你点击label标签的文本，就会自动触发那个绑定的控件，就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。可以将以下代码复制到<code>&lt;body&gt;</code>标签下进行测试。<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"male"</span>&gt;</span>Male<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">id</span>=<span class="string">"male"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"female"</span>&gt;</span>Female<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">id</span>=<span class="string">"female"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2016/08/09/HTML@6表单标签/" class="article-date">
+  <time datetime="2016-08-09T02:18:52.000Z" itemprop="datePublished">2016-08-09</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/前端笔记/">前端笔记</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2016/08/13/HTML@7结尾篇/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HTML@7补充篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2016/08/08/HTML@5表格标签/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTML@5表格标签</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

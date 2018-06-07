@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>读《一道JS面试题引发的思考》 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="读《一道JS面试题引发的思考》笔记和思考这真是一篇牛逼的文章……读了一个多小时才读懂，得好好品味一下才好 JS面试题原题//比较下面两段代码，试述两段代码的不同之处// A--------------------------var scope = &quot;global scope&quot;;function checkscope()&amp;#123;    var scope = &quot;local scope&quot;;">
+<meta name="keywords" content="前端,笔记,JS,思考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《一道JS面试题引发的思考》">
+<meta property="og:url" content="http://jackieanxis.github.io/2016/11/30/读《一道JS面试题引发的思考》笔记和思考/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="读《一道JS面试题引发的思考》笔记和思考这真是一篇牛逼的文章……读了一个多小时才读懂，得好好品味一下才好 JS面试题原题//比较下面两段代码，试述两段代码的不同之处// A--------------------------var scope = &quot;global scope&quot;;function checkscope()&amp;#123;    var scope = &quot;local scope&quot;;">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/83040077.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/6167039.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/91284528.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/36836234.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-12-1/10486754.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/29470224.jpg">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-12-1/85400904.jpg">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《一道JS面试题引发的思考》">
+<meta name="twitter:description" content="读《一道JS面试题引发的思考》笔记和思考这真是一篇牛逼的文章……读了一个多小时才读懂，得好好品味一下才好 JS面试题原题//比较下面两段代码，试述两段代码的不同之处// A--------------------------var scope = &quot;global scope&quot;;function checkscope()&amp;#123;    var scope = &quot;local scope&quot;;">
+<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/83040077.jpg">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-读《一道JS面试题引发的思考》笔记和思考" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      读《一道JS面试题引发的思考》
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h1 id="读《一道JS面试题引发的思考》笔记和思考"><a href="#读《一道JS面试题引发的思考》笔记和思考" class="headerlink" title="读《一道JS面试题引发的思考》笔记和思考"></a>读<a href="http://web.jobbole.com/89101/?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">《一道JS面试题引发的思考》</a>笔记和思考</h1><p>这真是一篇牛逼的文章……读了一个多小时才读懂，得好好品味一下才好</p>
+<h3 id="JS面试题原题"><a href="#JS面试题原题" class="headerlink" title="JS面试题原题"></a>JS面试题原题</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//比较下面两段代码，试述两段代码的不同之处</span></span><br><span class="line"><span class="comment">// A--------------------------</span></span><br><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// B---------------------------</span></span><br><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()();</span><br></pre></td></tr></table></figure>
+<p>这两段代码其实都输出<code>&quot;local scope&quot;</code>，考的是跟函数作用域链和闭包相关的知识。</p>
+<p>其实这道题在《JavaScript权威指南》第八章也出现过，当时只是略微理解了一下，大概讲的是，<strong>函数在定义的时候即会绑定到作用域链上</strong>，但是不是很深刻。这篇文章解释的异常详细，都让我觉得有些晦涩，所以要写点笔记。</p>
+<h3 id="变量对象-variable-object"><a href="#变量对象-variable-object" class="headerlink" title="变量对象(variable object)"></a>变量对象(variable object)</h3><blockquote>
+<p>Every execution context has associated with it a variable object. Variables and functions declared in the source text are added as properties of the variable object. For function code, parameters are added as properties of the variable object.</p>
+<p>简言之就是：<strong>每一个执行上下文都会分配一个变量对象(variable object)，变量对象的属性由 变量(variable) 和 函数声明(function declaration) 构成。在函数上下文情况下，参数列表(parameter list)也会被加入到变量对象(variable object)中作为属性。变量对象与当前作用域息息相关。不同作用域的变量对象互不相同，它保存了当前作用域的所有函数和变量。</strong></p>
+</blockquote>
+<p>好吧，文章中的简而言之真的非常<strong>简</strong>而言之…</p>
+<p>我自己理解了一下，<strong>变量对象</strong>就是一个保存当前作用域的东西，里面存了当前作用域的所有函数和变量（以属性的方式），但是这个叫<strong>变量对象</strong>的东西，是没法被程序调度起来的（除了全局变量对象，其实就是<code>window</code>对象）。</p>
+<p>文中有两段神奇的代码值得研究一下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// "function"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 函数表达式</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> <span class="title">_a</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// "function"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> _a); <span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>这个区别其实在于：第二段代码，执行完之后，其实根本就没有<code>_a</code>这个东西了，具体可以看我在浏览器中执行的结果截图。用函数表达式来定义函数，《JavaScript权威指南》书中讲到：<strong>定义函数表达式时并没有声明一个变量。</strong>所以，其实根本就没有声明<code>_a</code>这个变量，又怎么可能把它存入<strong>变量对象(variable object)</strong>中呢</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/83040077.jpg" alt=""></p>
+<h3 id="活动对象（activation-object）"><a href="#活动对象（activation-object）" class="headerlink" title="活动对象（activation object）"></a>活动对象（activation object）</h3><blockquote>
+<p>When control enters an execution context for function code, an object called the activation object is created and associated with the execution context. The activation object is initialised with a property with name arguments and attributes { DontDelete }. The initial value of this property is the arguments object described below.<br>The activation object is then used as the variable object for the purposes of variable instantiation.</p>
+<p>简言之：<strong>当函数被激活，那么一个活动对象(activation object)就会被创建并且分配给执行上下文。活动对象由特殊对象 arguments 初始化而成。随后，他被当做变量对象(variable object)用于变量初始化。</strong></p>
+</blockquote>
+<p>我的理解，活动对象，其实就是<code>arguments</code>。在函数执行的时候创建。文中有一段代码用来解释这个概念：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> gender = <span class="string">"male"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="string">"k"</span>,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>不知道用下面这个图来解释它合不合适，但是这是我的理解。</p>
+<p>在函数<code>a</code>调用的时候，会创建<code>activation object</code>，而<code>activation object</code>事实上就是<code>arguments</code>。之后函数<code>a</code>在执行的时候，会生成<code>variable object</code>，实际上就是作用域内的函数和对象再加上<code>activation object</code>组成的。</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/6167039.jpg" alt=""></p>
+<h3 id="执行环境和作用域链-execution-context-and-scope-chain"><a href="#执行环境和作用域链-execution-context-and-scope-chain" class="headerlink" title="执行环境和作用域链(execution context and scope chain)"></a>执行环境和作用域链(execution context and scope chain)</h3><p>文中引入了一个叫<strong>环境栈</strong>的概念，其实很好理解，就是作用域链的另外一种表现形式而已。</p>
+<p>我比较想画个图来帮助理解下面这段话：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">"2"</span>;</span><br><span class="line">    <span class="keyword">return</span> a+num;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>执行流开始 初始化function test，test函数会维护一个私有属性 [[scope]],并使用当前环境的作用域链初始化，在这里就是 test.[[Scope]]=global scope.</li>
+<li>test函数执行，这时候会为test函数创建一个执行环境，然后通过复制函数的[[Scope]]属性构建起test函数的作用域链。此时 test.scopeChain = [test.[[Scope]]]</li>
+<li>test函数的活动对象被初始化，随后活动对象被当做变量对象用于初始化。即 test.variableObject = test.activationObject.contact[num,a] = [arguments].contact[num,a]</li>
+<li>test函数的变量对象被压入其作用域链，此时 test.scopeChain = [ test.variableObject, test.[[scope]]];</li>
+</ol>
+</blockquote>
+<ol>
+<li><p><code>test</code>函数的声明（初始化）。事实上会生成一个<code>[[Scopes]]</code>属性，作为<code>test</code>函数作用域链上的一层。我特地去浏览器中声明了这个函数，并且查看了它的属性，的确有<code>[[Scopes]]</code>这个属性。</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/91284528.jpg" alt=""></p>
+</li>
+<li><p><code>test</code>函数开始执行。创建<code>test</code>函数内部的作用域，并添加到作用域链上。此时<code>test</code>函数的作用域链（黄色部分）就包含了<code>[[Scopes]]</code>属性：</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/36836234.jpg" alt=""></p>
+</li>
+<li><p>在步骤2的同时，会用<code>arguments</code>初始化<code>test</code>的<code>activation object</code>（活动对象），并且用这个<code>activation object</code>（活动对象）来生成<code>variable object</code>（变量对象）。之后，将<code>variable object</code>（变量对象）添加到作用域链中。</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-12-1/10486754.jpg" alt=""></p>
+</li>
+<li><p>动图解释一下：</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-11-30/29470224.jpg" alt=""></p>
+<h3 id="关于题目本身"><a href="#关于题目本身" class="headerlink" title="关于题目本身"></a>关于题目本身</h3><p>其实两段代码差别不大，区别在于，<code>f()</code>函数执行的环境不一样。花了一个多小时做了个动图，结果觉得还是算了。。。太麻烦了。。。</p>
+<p>因为B这段代码，执行完<code>checkscope()</code>函数之后，就从<strong>执行环境栈</strong>中弹出<code>checkscope</code>的执行环境，但是对结果不产生影响。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()();</span><br></pre></td></tr></table></figure>
+<p>而A这段代码，在执行<code>checkscope()</code>的过程中执行了<code>f()</code>，此时<code>checkscope</code>的执行环境还未从<strong>执行环境栈</strong>中弹出。下面这幅图展示了这点区别，当A代码还在执行<code>f()</code>的时候，B代码已经从栈中弹出了<code>checkscope</code>的作用域链。</p>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/public/16-12-1/85400904.jpg" alt=""></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2016/11/30/读《一道JS面试题引发的思考》笔记和思考/" class="article-date">
+  <time datetime="2016-11-30T14:50:00.000Z" itemprop="datePublished">2016-11-30</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/JS笔记和思考/">JS笔记和思考</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/思考/">思考</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2016/12/09/CSS@8布局（上）：display&z-index/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS@8布局（上）：display&amp;amp;z-index
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2016/11/29/CSS@7背景/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS@7背景</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

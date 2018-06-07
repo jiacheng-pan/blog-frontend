@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript中四种不同的属性检测方式比较 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript中四种不同的属性检测方式比较 用in方法 var o = &amp;#123;x:1&amp;#125;;&quot;x&quot; in o; //true&quot;y&quot; in o; //false&quot;toString&quot; in o; //true，继承属性可以被检测到&quot;toString&quot; in Object.prototype; //true，不可枚举的属性可以被检测到  hasOwnProperty()方法 var o">
+<meta name="keywords" content="前端,笔记,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中四种不同的属性检测方式比较">
+<meta property="og:url" content="http://jackieanxis.github.io/2017/05/16/JavaScript中四种不同的属性检测方式比较/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="JavaScript中四种不同的属性检测方式比较 用in方法 var o = &amp;#123;x:1&amp;#125;;&quot;x&quot; in o; //true&quot;y&quot; in o; //false&quot;toString&quot; in o; //true，继承属性可以被检测到&quot;toString&quot; in Object.prototype; //true，不可枚举的属性可以被检测到  hasOwnProperty()方法 var o">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-01-25T05:58:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中四种不同的属性检测方式比较">
+<meta name="twitter:description" content="JavaScript中四种不同的属性检测方式比较 用in方法 var o = &amp;#123;x:1&amp;#125;;&quot;x&quot; in o; //true&quot;y&quot; in o; //false&quot;toString&quot; in o; //true，继承属性可以被检测到&quot;toString&quot; in Object.prototype; //true，不可枚举的属性可以被检测到  hasOwnProperty()方法 var o">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-JavaScript中四种不同的属性检测方式比较" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript中四种不同的属性检测方式比较
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h3 id="JavaScript中四种不同的属性检测方式比较"><a href="#JavaScript中四种不同的属性检测方式比较" class="headerlink" title="JavaScript中四种不同的属性检测方式比较"></a>JavaScript中四种不同的属性检测方式比较</h3><ol>
+<li><p>用in方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">x</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> o; <span class="comment">//true</span></span><br><span class="line"><span class="string">"y"</span> <span class="keyword">in</span> o; <span class="comment">//false</span></span><br><span class="line"><span class="string">"toString"</span> <span class="keyword">in</span> o; <span class="comment">//true，继承属性可以被检测到</span></span><br><span class="line"><span class="string">"toString"</span> <span class="keyword">in</span> <span class="built_in">Object</span>.prototype; <span class="comment">//true，不可枚举的属性可以被检测到</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hasOwnProperty()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">x</span>:<span class="number">1</span>&#125;;</span><br><span class="line">o.hasOwnProperty(<span class="string">"x"</span>); <span class="comment">//true</span></span><br><span class="line">o.hasOwnProperty(<span class="string">"y"</span>); <span class="comment">//false</span></span><br><span class="line">o.hasOwnProperty(<span class="string">"toString"</span>); <span class="comment">//false，无法检测继承属性</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.hasOwnProperty(<span class="string">"toString"</span>); <span class="comment">//true，不可枚举的属性可以被检测到</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>propertyIsEnumerable()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.create(&#123;<span class="attr">y</span>:<span class="number">2</span>&#125;);</span><br><span class="line">o.x = <span class="number">1</span>;</span><br><span class="line">o.propertyIsEnumerable(<span class="string">"x"</span>); <span class="comment">//true，x是可枚举的属性</span></span><br><span class="line">o.propertyIsEnumerable(<span class="string">"y"</span>); <span class="comment">//false，继承属性，不可枚举</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.propertyIsEnumerable(<span class="string">"toString"</span>); <span class="comment">//false，不可枚举的属性无法被检测</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>!== undefined方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">x</span> : <span class="number">1</span>&#125;;</span><br><span class="line">o.x !== <span class="literal">undefined</span>; <span class="comment">//true，o中有属性x</span></span><br><span class="line">o.toString !== <span class="literal">undefined</span>; <span class="comment">//true，继承属性也可以被检测到</span></span><br></pre></td></tr></table></figure>
+<p>这种方法的一个弱点是，无法区分不存在的属性和存在但值为undefined的值，如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">x</span> : <span class="literal">undefined</span>&#125;;</span><br><span class="line">o.x !== <span class="literal">undefined</span>; <span class="comment">//false</span></span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> o; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>注意这里用的是<code>&quot;!==&quot;</code>而不是<code>&quot;!=&quot;</code>，因为<code>&quot;!==&quot;</code>可以区分<code>undefined</code>和<code>null</code>。<br>但有时候不用区分<code>&quot;null&quot;</code>和<code>&quot;undefined&quot;</code>，只要判断一个属性不是<code>null</code>或<code>undefined</code>即可。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//如果o含有属性x，且x的值不是undefined或null，o.x乘以2</span></span><br><span class="line"><span class="keyword">if</span>(o.x != <span class="literal">null</span>) o.x *= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结<br>继承属性是不可枚举的，所以能检测继承属性的，肯定也能检测到不可枚举属性。<br>×表示无法检测，√表示可以检测</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>检测方法</th>
+<th>不可枚举属性？</th>
+<th>继承属性？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in</td>
+<td>$\checkmark$</td>
+<td>$\checkmark$</td>
+</tr>
+<tr>
+<td>hasOwnProperty</td>
+<td>$\checkmark$</td>
+<td>$\times$</td>
+</tr>
+<tr>
+<td>propertyIsEnumerable</td>
+<td>$\times$</td>
+<td>$\times$</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>$\checkmark$</td>
+<td>$\checkmark$</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2017/05/16/JavaScript中四种不同的属性检测方式比较/" class="article-date">
+  <time datetime="2017-05-16T15:53:00.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/05/19/JavaScript函数表达式和函数声明/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript函数表达式和函数声明
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2017/04/15/JavaScript类型与相等性/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript类型转换和相等性</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

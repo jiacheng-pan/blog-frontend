@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS@8布局（上）：display&amp;amp;z-index | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS布局（上）：display&amp;amp;z-index文档流的概念文档流指的是元素按照其在 HTML 中的位置顺序决定排布的过程，或者说在排布过程中将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素。但是，在某些情况下，元素会脱离文档流，他们不会按照既定的顺序进行排布，而是按照指定的规则在文档流中浮动。  displaydisplay属性，是用来设置元素的布局方式，就是元素如何在页面">
+<meta name="keywords" content="前端,笔记,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS@8布局（上）：display&amp;amp;z-index">
+<meta property="og:url" content="http://jackieanxis.github.io/2016/12/09/CSS@8布局（上）：display&z-index/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="CSS布局（上）：display&amp;amp;z-index文档流的概念文档流指的是元素按照其在 HTML 中的位置顺序决定排布的过程，或者说在排布过程中将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素。但是，在某些情况下，元素会脱离文档流，他们不会按照既定的顺序进行排布，而是按照指定的规则在文档流中浮动。  displaydisplay属性，是用来设置元素的布局方式，就是元素如何在页面">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/16-12-12/76855013-file_1481555964594_d399.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/jackie/20170122/191902397.png">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS@8布局（上）：display&amp;amp;z-index">
+<meta name="twitter:description" content="CSS布局（上）：display&amp;amp;z-index文档流的概念文档流指的是元素按照其在 HTML 中的位置顺序决定排布的过程，或者说在排布过程中将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素。但是，在某些情况下，元素会脱离文档流，他们不会按照既定的顺序进行排布，而是按照指定的规则在文档流中浮动。  displaydisplay属性，是用来设置元素的布局方式，就是元素如何在页面">
+<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/16-12-12/76855013-file_1481555964594_d399.png">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-CSS@8布局（上）：display&amp;z-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS@8布局（上）：display&amp;amp;z-index
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h1 id="CSS布局（上）：display-amp-z-index"><a href="#CSS布局（上）：display-amp-z-index" class="headerlink" title="CSS布局（上）：display&amp;z-index"></a>CSS布局（上）：<code>display</code>&amp;<code>z-index</code></h1><h3 id="文档流的概念"><a href="#文档流的概念" class="headerlink" title="文档流的概念"></a>文档流的概念</h3><p>文档流指的是元素按照其在 HTML 中的位置顺序决定排布的过程，或者说在排布过程中将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素。<br>但是，在某些情况下，元素会脱离文档流，他们不会按照既定的顺序进行排布，而是按照指定的规则在文档流中浮动。</p>
+<hr>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a><code>display</code></h2><p><code>display</code>属性，是用来设置元素的布局方式，就是元素如何在页面上展示。</p>
+<blockquote>
+<p>display：<strong>none</strong> | <strong>inline</strong> | <strong>block</strong> | list-item | <strong>inline-block</strong> | <strong>table</strong> | inline-table | table-caption | table-cell | table-row | table-row-group | table-column | table-column-group | table-footer-group | table-header-group | run-in | box | inline-box | flexbox | inline-flexbox | flex | inline-flex</p>
+</blockquote>
+<p><code>display</code>可以有很多可选的值，但是，<strong>“似乎”</strong>最重要的就只有我加粗的这几个。比较常用的也是这几个。下面就分别介绍这几个值的含义。</p>
+<h3 id="display-inline-行内元素"><a href="#display-inline-行内元素" class="headerlink" title="display:inline 行内元素"></a><code>display:inline</code> 行内元素</h3><blockquote>
+<ul>
+<li>默认宽度为内容宽度</li>
+<li>不可设置宽高</li>
+<li>元素之间同行显示，内部会换行</li>
+</ul>
+</blockquote>
+<ul>
+<li>如果一个元素被指定为<code>display：inline</code>，那么这个元素就是一个行内元素。</li>
+<li><p>行内元素的意思，就是这个元素<strong>能和其他元素在同一行显示</strong>，比如以下两个元素都是<code>display:inline</code>，他们在同一行显示：</p>
+</li>
+<li><p><strong>内部会换行</strong>：虽然<code>inline</code>是一个行内元素，但是它自己内部是会换行的</p>
+</li>
+<li><p><strong>不可设置宽高</strong>：就是无法为一个行内元素设置宽（<code>width</code>）高（<code>height</code>），<code>inline</code>元素的行高完全是由元素本身内容决定的</p>
+</li>
+</ul>
+<ul>
+<li>默认是<code>display:inline</code>的元素有：<code>span</code>, <code>a</code>, <code>label</code>, <code>cite</code>, <code>em</code>, …</li>
+</ul>
+<hr>
+<h3 id="display：block-块级元素"><a href="#display：block-块级元素" class="headerlink" title="display：block 块级元素"></a><code>display：block</code> 块级元素</h3><blockquote>
+<ul>
+<li>默认宽度为父元素的宽度</li>
+<li>可设置宽高</li>
+<li>元素之间换行显示</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><strong>默认宽度为父元素的宽度</strong>，指的是，子元素的<code>margin</code>+<code>border</code>+<code>padding</code>+<code>content</code>的宽度和等于父元素<code>content-box</code>的宽度。默认高度是元素内容高度，值得注意。如果没有内容，那么高度即为0。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">margin</span>:<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">padding</span>:<span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: lightseagreen;</span><br><span class="line">	<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">20px</span>;</span><br><span class="line">	<span class="attribute">padding</span>:<span class="number">20px</span>;</span><br><span class="line">	<span class="attribute">margin</span>:<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <img src="http://o6vut8vrh.bkt.clouddn.com/16-12-12/76855013-file_1481555964594_d399.png" alt=""></p>
+</li>
+<li><p>默认是<code>display:block</code>的元素有：<code>div</code>, <code>p</code>, <code>h1</code>-<code>h6</code>, <code>ul</code>, <code>form</code>…</p>
+<hr>
+<h3 id="display-inline-block-行块元素"><a href="#display-inline-block-行块元素" class="headerlink" title="display:inline-block 行块元素"></a><code>display:inline-block</code> 行块元素</h3><blockquote>
+<ul>
+<li>默认宽度为内容宽度</li>
+</ul>
+<ul>
+<li>可设置宽高</li>
+<li>元素之间,同行显示</li>
+<li>后续元素宽度超过边界之后就会整块换行</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>display:inline-block</code>综合了行级元素和块级元素的特点。</p>
+</li>
+<li><strong>默认宽度为内容宽度</strong>，在未设置元素宽度的时候，元素的默认宽度就是内容的宽度，这和<code>inline</code>元素保持一致。但又同时是<strong>可设置宽高</strong>的。</li>
+<li><p>元素之间，同行显示，超过边界换行</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">     <span class="attribute">background-color</span>:lightseagreen;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="selector-class">.children</span>&#123;</span><br><span class="line">     <span class="attribute">display</span>: inline-block;</span><br><span class="line">     <span class="attribute">width</span>: <span class="number">30px</span>;</span><br><span class="line">     <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">     <span class="attribute">background-color</span>:white;</span><br><span class="line">     <span class="attribute">outline</span>:<span class="number">1px</span> solid lightblue;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>默认是<code>display:inline-block</code>的元素有：<code>input</code>, <code>textarea</code>, <code>selelct</code>, <code>button</code>, …</p>
+</li>
+<li><code>display:inline-block</code>一直有一个历史遗留问题。就是<strong>间隙问题</strong>，就比如下面这段代码，你可以复制这段代码到本地，你会发现，将<code>content-box</code>之外的所有内容都设为0，元素之间仍旧有一个间隙，令人百思不得其解。<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background-color: lightseagreen;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.element</span> &#123;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">        width: 80px;</span></span><br><span class="line"><span class="undefined">        height: 40px;</span></span><br><span class="line"><span class="undefined">        margin: 0;</span></span><br><span class="line"><span class="undefined">        padding: 0;</span></span><br><span class="line"><span class="undefined">        border: 0;</span></span><br><span class="line"><span class="undefined">        background-color: white;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://o6vut8vrh.bkt.clouddn.com/jackie/20170122/191902397.png" alt="mark"><br>关于它的历史和解决方案，可以参照这篇文章<a href="http://www.iyunlu.com/view/css-xhtml/64.html" target="_blank" rel="noopener">inline-block 前世今生</a>，以及这篇文章提到了很多解决方案：<a href="http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/" target="_blank" rel="noopener">去除inline-block元素间间距的N种方法</a></p>
+<ul>
+<li>我个人而言，比较推崇在父元素上加上<code>font-size:0</code>的方法。但是这个方法也有局限性，因为要为每个子元素都再设置一遍<code>font-size</code></li>
+</ul>
+<hr>
+<h3 id="display-none-不显示"><a href="#display-none-不显示" class="headerlink" title="display:none 不显示"></a><code>display:none</code> 不显示</h3><ul>
+<li>指的是元素不出现在文档流中，和变透明是<strong>不一样</strong>的，<code>display:none</code>是完完全全的消失</li>
+</ul>
+<h2 id="定位偏移属性"><a href="#定位偏移属性" class="headerlink" title="定位偏移属性"></a>定位偏移属性</h2><hr>
+<h3 id="top-bottom-left-right"><a href="#top-bottom-left-right" class="headerlink" title="top bottom left right"></a><code>top</code> <code>bottom</code> <code>left</code> <code>right</code></h3><ul>
+<li>当元素的<code>position</code>属性不是<code>static</code>的时候（下文中会讲），或者添加了<code>float</code>属性，那么就可以使用标题中的这四个属性来进行定位偏移</li>
+<li>默认是<code>auto</code>，也就是<code>top</code>和<code>left</code>都为0，对齐到父元素<code>content-box</code>的左上角，以此类推。</li>
+<li>这四个值都可以设置</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2016/12/09/CSS@8布局（上）：display&z-index/" class="article-date">
+  <time datetime="2016-12-09T11:50:00.000Z" itemprop="datePublished">2016-12-09</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/前端笔记/">前端笔记</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2016/12/31/CSS@9布局（中）：position/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS@布局（中）：position
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2016/11/30/读《一道JS面试题引发的思考》笔记和思考/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">读《一道JS面试题引发的思考》</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

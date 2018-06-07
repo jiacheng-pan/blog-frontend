@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS@10布局（下）：float | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS布局（下）：floatfloat浮动布局顾名思义，float浮动布局的意思就是，元素会浮动起来，会出现类似脱离文档流的行为。具体见例子： &amp;lt;div style=’width: 100px;height: 60px;background-color: lightseagreen;float: left;line-height: 60px;text-align: center;color:">
+<meta name="keywords" content="前端,笔记,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS@10布局（下）：float">
+<meta property="og:url" content="http://jackieanxis.github.io/2017/01/14/CSS@10布局（下）：float/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="CSS布局（下）：floatfloat浮动布局顾名思义，float浮动布局的意思就是，元素会浮动起来，会出现类似脱离文档流的行为。具体见例子： &amp;lt;div style=’width: 100px;height: 60px;background-color: lightseagreen;float: left;line-height: 60px;text-align: center;color:">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/36797617-file_1485155013147_88f4.gif">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/45895832-file_1485158182308_bd1.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/80236331-file_1485158235226_ed22.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/2578475-file_1485164143012_10777.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/76766693-file_1485164210453_f7fe.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/77037993-file_1485164386446_13e6e.png">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/53396546-file_1485174286663_ef98.png">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS@10布局（下）：float">
+<meta name="twitter:description" content="CSS布局（下）：floatfloat浮动布局顾名思义，float浮动布局的意思就是，元素会浮动起来，会出现类似脱离文档流的行为。具体见例子： &amp;lt;div style=’width: 100px;height: 60px;background-color: lightseagreen;float: left;line-height: 60px;text-align: center;color:">
+<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-23/36797617-file_1485155013147_88f4.gif">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-CSS@10布局（下）：float" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS@10布局（下）：float
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h1 id="CSS布局（下）：float"><a href="#CSS布局（下）：float" class="headerlink" title="CSS布局（下）：float"></a>CSS布局（下）：<code>float</code></h1><h2 id="float浮动布局"><a href="#float浮动布局" class="headerlink" title="float浮动布局"></a><code>float</code>浮动布局</h2><p>顾名思义，<code>float</code>浮动布局的意思就是，元素会浮动起来，会出现类似脱离文档流的行为。具体见例子：</p>
+<div style="width: 200px;height: 200px;background-color: pink;color: white;font-size: 12px;font-family: 'Microsoft yahei';margin:0 auto;">&lt;div style=’width: 100px;height: 60px;background-color: lightseagreen;float: left;line-height: 60px;text-align: center;color: white;font-size: 12px;font-family:’Microsoft yahei’;’&gt;我是浮动的元素</div>我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本，我是正常的文本。
+
+<h3 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h3><blockquote>
+<p><span>float：left|right<span style="color: #ccc;">|none|inherit</span></span></p>
+</blockquote>
+<ul>
+<li><code>float</code>一般常用的两个属性值是<code>left</code>和<code>right</code>，分别表示向左浮动和向右浮动。</li>
+</ul>
+<h3 id="一般特性"><a href="#一般特性" class="headerlink" title="一般特性"></a>一般特性</h3><blockquote>
+<ul>
+<li>默认宽度（高度）是内容宽度（高度）</li>
+<li>向指定方向一直移动</li>
+<li>半脱离文档流：对元素，是脱离文档流的；对所有内容，在文档流中</li>
+<li>float的元素在同一文档流中</li>
+</ul>
+</blockquote>
+<p><strong>逐一解释</strong>：</p>
+<ul>
+<li><p><strong>默认宽度（高度）是内容宽度（高度）</strong>：在不对浮动元素设置宽高，那么，元素的宽高就是内容的宽高。</p>
+</li>
+<li><p><strong>向指定方向移动</strong>：这个很容易理解，就是按照<code>float</code>元素的值的方向进行移动。<br>有一点值得注意的是：多个兄弟元素都为浮动元素时，并且它们的浮动方向一致时，它们是按照队列的方式进行浮动的。<br>比如下面这个例子中，先向右浮动的“浮动元素1”也就理所应当的浮动到最右边，紧接着是“浮动元素2”和“浮动元素3”</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 100%;"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>浮动元素1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>浮动元素2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>浮动元素3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div style="width: 100%;"><div style="float:right;background-color: lightblue;border: 5px solid white;">浮动元素1</div><div style="float:right;background-color: lightblue;border: 5px solid white;">浮动元素2</div><div style="float:right;background-color: lightblue;border: 5px solid white;">浮动元素3</div><br></div>
+
+<ul>
+<li><p><strong>脱离文档流</strong>：指的是，对元素设置<code>float</code>属性后，元素就不再占据原有的位置。如下图动画演示，元素从普通元素变成一个浮动元素的过程：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/36797617-file_1485155013147_88f4.gif" alt=""><br>源代码（设置成浮动元素后的）：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div&#123;</span></span><br><span class="line"><span class="undefined">        line-height: 50px;</span></span><br><span class="line"><span class="undefined">        font-family: "Microsoft yahei";</span></span><br><span class="line"><span class="undefined">        color: white;</span></span><br><span class="line"><span class="undefined">        border-top: 5px solid white;</span></span><br><span class="line"><span class="undefined">        border-bottom: 5px solid white;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .parent &#123;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .element &#123;</span></span><br><span class="line"><span class="undefined">        background-color: lightblue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .float &#123;</span></span><br><span class="line"><span class="undefined">		float：right;</span></span><br><span class="line"><span class="undefined">        background-color: pink;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span>普通元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>浮动元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span>普通元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>半脱离文档流</strong>：一个浮动的元素，对于其兄弟元素而言，的确已经不再占据空间，就如上面所示。<br>请看下面这段代码：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    div&#123;</span></span><br><span class="line"><span class="undefined">        line-height: 50px;</span></span><br><span class="line"><span class="undefined">        font-family: "Microsoft yahei";</span></span><br><span class="line"><span class="undefined">        font-size: 10px;</span></span><br><span class="line"><span class="undefined">        color: white;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .parent &#123;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .element &#123;</span></span><br><span class="line"><span class="undefined">        background-color: lightblue;</span></span><br><span class="line"><span class="undefined">        outline: 1px dashed red;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .float &#123;</span></span><br><span class="line"><span class="undefined">        float: left;</span></span><br><span class="line"><span class="undefined">        background-color: pink;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>浮动元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element"</span>&gt;</span>我是普通元素！我是普通元素！<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们会以为，上面的代码大概会产生这样的效果：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/45895832-file_1485158182308_bd1.png" alt=""><br>但是，事实上，效果是像下面这样的，上面的效果，是利用<code>position:absolute</code>实现的<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/80236331-file_1485158235226_ed22.png" alt=""><br>我们发现，浮动元素，对于其兄弟元素的<strong>内容（文字）</strong>（或者父元素的内容）而言，还是会占据空间，会把这些<strong>内容（文字）</strong>挤到右边去，并不是完全脱离文档流的。但是对于这个兄弟元素本身，并没有占据空间，而是浮在这个元素上方。这个兄弟元素还是占据100%的大小（红色虚线框表示的地方）。</p>
+<ul>
+<li><strong>float的元素在同一文档流中</strong>：在解释<strong>按照队列顺序进行浮动</strong>这一点时，我们已经看到，这些浮动元素之间，互相是会占据一定位置的，也就是说他们是处于同一文档流中的。</li>
+</ul>
+<h2 id="clear清除浮动"><a href="#clear清除浮动" class="headerlink" title="clear清除浮动"></a><code>clear</code>清除浮动</h2><h3 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h3><p><code>float</code>元素，因为其脱离文档流的关系，往往会超出父元素，进而影响到其他元素。比如下面这段代码：<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>clear<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    body &#123;</span></span><br><span class="line"><span class="undefined">        width: 400px;</span></span><br><span class="line"><span class="undefined">        line-height: 1.6;</span></span><br><span class="line"><span class="undefined">        font-family: 'Microsoft yahei';</span></span><br><span class="line"><span class="undefined">        color: white;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .parent &#123;</span></span><br><span class="line"><span class="undefined">        padding: 5px 0;</span></span><br><span class="line"><span class="undefined">        margin-bottom: 10px;</span></span><br><span class="line"><span class="undefined">        background-color: pink;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .float-left &#123;</span></span><br><span class="line"><span class="undefined">        margin: auto 5px;</span></span><br><span class="line"><span class="undefined">        float: left;</span></span><br><span class="line"><span class="undefined">        line-height: 80px;</span></span><br><span class="line"><span class="undefined">        background-color: lightblue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent clear"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-left"</span>&gt;</span>float: left;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        你们有一个好，全世界跑到什么地方，你们比其他的西方记者啊，跑得还快。</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>或许，我们脑中想象的大概是这个样子的：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/2578475-file_1485164143012_10777.png" alt=""><br>但事实上，却是这个样子的：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/76766693-file_1485164210453_f7fe.png" alt=""><br>很明显，我们可以得知，这其实是因为<code>float</code>元素脱离文档流所致，因为父元素是<code>block</code>元素，默认高度是内容高度，而<code>float</code>元素脱离了文档流，不在计算范围内（当然父元素是<code>inline-block</code>的时候就不会有这个问题）<br>而更严重的问题，<code>float:left;</code>的元素，还有可能会影响到不属于同一个父元素的其他元素，比如这样：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/77037993-file_1485164386446_13e6e.png" alt=""><br>而<code>clear</code>属性，就是为了解决这个问题，而生的，目的就是<strong>清除浮动，能让父元素完全包含<code>float</code>子元素</strong>，让图二变成图一这种效果。</p>
+<h3 id="语法规则-1"><a href="#语法规则-1" class="headerlink" title="语法规则"></a>语法规则</h3><blockquote>
+<p><span>clear:both|left|right<span style="color: #ccc;">|none|inherit</span></span></p>
+</blockquote>
+<ul>
+<li>一般常用的就是<code>clear:both;</code>，指两边都不允许有浮动对象</li>
+<li><code>left</code>指的是不允许左边有浮动对象</li>
+<li><code>right</code>指的是不允许右边有浮动对象</li>
+</ul>
+<h3 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h3><h4 id="方法一：增添元素"><a href="#方法一：增添元素" class="headerlink" title="方法一：增添元素"></a>方法一：增添元素</h4><p>通过在浮动元素后，增加一个空白元素<code>&lt;br class=&quot;clear&quot;&gt;</code>来清除浮动，具体见案例：<br><strong>未清除浮动前</strong>：</p>
+<p><div style="margin:20px auto; width: 400px;padding: 10px;outline: 1px dashed red;"><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div></div><br><br><br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">1px</span> dashed red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.float</span> &#123;</span><br><span class="line">	<span class="attribute">float</span>: left;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">margin</span>: auto <span class="number">5px</span>;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">	<span class="attribute">font-family</span>: <span class="string">'Microsoft yahei'</span>;</span><br><span class="line">	<span class="attribute">color</span>: white;</span><br><span class="line">	<span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在未清除浮动前，我们可以见到如上景象，当我们修改一下HTML标签结构，增加一个元素之后：</p>
+<p><div style="margin:20px auto; width: 400px;padding: 10px;outline: 1px dashed red;"><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div><div style="font-family: 'Microsoft yahei';line-height: 100px;float: left;width: 100px;margin: auto 5px;text-align: center;color: white;background-color: pink;">float: left</div><br style="clear: both;height: 0;overflow: hidden;visibility: hidden;"></div><br><br><br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>float: left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span> <span class="attr">class</span>=<span class="string">"clear"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.clear</span>&#123;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析代码</strong>：</p>
+<ul>
+<li>我们看到，在HTML结构中，我们增加了一个<code>&lt;br class=&quot;clear&quot;&gt;</code>的元素，这个元素是用来清除浮动的</li>
+<li>这个元素是<code>&lt;br&gt;</code>标签，当然这和元素标签是什么并没有什么关系，只要是<code>block</code>元素即可；或者为之设置一个样式：<code>display:block</code></li>
+<li>css中，其实有用的代码只有<code>clear:both</code>这一行，后面的几行，只是为了让这个元素看不到罢了。</li>
+</ul>
+<h4 id="方法二：直接为父元素增加样式"><a href="#方法二：直接为父元素增加样式" class="headerlink" title="方法二：直接为父元素增加样式"></a>方法二：直接为父元素增加样式</h4><p>第一种方法的一个弊端是，我们必须要修改HTML结构，才能达到清除样式的作用。那么，这种方法，就只要修改CSS，就能清除浮动。<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">'.'</span>;</span><br><span class="line">	<span class="attribute">display</span>: block;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">visbility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>事实上，这段代码其实在父元素最后面增加了一个<code>&#39;.&#39;</code>，这个方法其实就是前面的方法的一个简略做法而已。我们发现，dom树中多了一个<code>::after</code>：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-23/53396546-file_1485174286663_ef98.png" alt=""></p>
+<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><p>需要清除浮动的情况，只存在父元素是<code>block</code>元素的情况下；<br>而在<code>inline-block</code>的情况下，是不存在需要清除浮动的情况的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2017/01/14/CSS@10布局（下）：float/" class="article-date">
+  <time datetime="2017-01-14T13:41:00.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/前端笔记/">前端笔记</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/01/29/CSS@11弹性布局flex/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS@11弹性布局flex
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2016/12/31/CSS@9布局（中）：position/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS@布局（中）：position</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

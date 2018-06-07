@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript类型转换和相等性 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="类型转换总结列表   值 字符串 数字 布尔值 对象     undefined “undefined” NaN false throwTypeError   null “null” 0 false throwTypeError   true “true” 1  newBoolean(true)   false “false” 0  newBoolean(false)   “”（空字符串）  0">
+<meta name="keywords" content="前端,笔记,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript类型转换和相等性">
+<meta property="og:url" content="http://jackieanxis.github.io/2017/04/15/JavaScript类型与相等性/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="类型转换总结列表   值 字符串 数字 布尔值 对象     undefined “undefined” NaN false throwTypeError   null “null” 0 false throwTypeError   true “true” 1  newBoolean(true)   false “false” 0  newBoolean(false)   “”（空字符串）  0">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-4-18/49990859-file_1492446304461_d920.png">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript类型转换和相等性">
+<meta name="twitter:description" content="类型转换总结列表   值 字符串 数字 布尔值 对象     undefined “undefined” NaN false throwTypeError   null “null” 0 false throwTypeError   true “true” 1  newBoolean(true)   false “false” 0  newBoolean(false)   “”（空字符串）  0">
+<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/17-4-18/49990859-file_1492446304461_d920.png">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-JavaScript类型与相等性" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript类型转换和相等性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h2 id="类型转换总结列表"><a href="#类型转换总结列表" class="headerlink" title="类型转换总结列表"></a>类型转换总结列表</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">字符串</th>
+<th style="text-align:left">数字</th>
+<th style="text-align:left">布尔值</th>
+<th style="text-align:left">对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">undefined</td>
+<td style="text-align:left">“undefined”</td>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">throwTypeError</td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:left">“null”</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">throwTypeError</td>
+</tr>
+<tr>
+<td style="text-align:left">true</td>
+<td style="text-align:left">“true”</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">newBoolean(true)</td>
+</tr>
+<tr>
+<td style="text-align:left">false</td>
+<td style="text-align:left">“false”</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">newBoolean(false)</td>
+</tr>
+<tr>
+<td style="text-align:left">“”（空字符串）</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">newString(“”)</td>
+</tr>
+<tr>
+<td style="text-align:left">“1.2”（非空，数字，允许首尾带有空格）</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1.2</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">newString(“1.2”)</td>
+</tr>
+<tr>
+<td style="text-align:left">“one”（非空，非数字）</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">newString(“one”)</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">“0”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">newNumber(0)</td>
+</tr>
+<tr>
+<td style="text-align:left">-0</td>
+<td style="text-align:left">“0”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">newNumber(-0)</td>
+</tr>
+<tr>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">“NaN”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">newNumber(NaN)</td>
+</tr>
+<tr>
+<td style="text-align:left">Infinity</td>
+<td style="text-align:left">“Infinity”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">newNumber(Infinity)</td>
+</tr>
+<tr>
+<td style="text-align:left">-Infinity</td>
+<td style="text-align:left">“-Infinity”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">newNumber(-Infinity)</td>
+</tr>
+<tr>
+<td style="text-align:left">1（非无穷大，非零）</td>
+<td style="text-align:left">“1”</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">newNumber(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">{}（任意对象）</td>
+<td style="text-align:left">详见下方</td>
+<td style="text-align:left">详见下方</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">[]（任意数组）</td>
+<td style="text-align:left">“”</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">[9]（1个数字元素）</td>
+<td style="text-align:left">“9”</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">[‘a’]（其他数组）</td>
+<td style="text-align:left">使用<code>join()</code>方法（默认用逗号连接）</td>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">function(){}（任意函数）</td>
+<td style="text-align:left">调用<code>toString()</code>方法，通常是转换成源代码字符串</td>
+<td style="text-align:left">NaN</td>
+<td style="text-align:left">true</td>
+</tr>
+</tbody>
+</table>
+<h2 id="对象如何转换成字符串或数字"><a href="#对象如何转换成字符串或数字" class="headerlink" title="对象如何转换成字符串或数字"></a>对象如何转换成字符串或数字</h2><ol>
+<li><p><code>toString()</code>方法：</p>
+<ul>
+<li><p>调用<code>toString()</code>方法，一般是返回<code>&quot;[object object]&quot;</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(&#123;<span class="attr">x</span>:<span class="number">1</span>, <span class="attr">y</span>:<span class="number">2</span>&#125;).toString() 			<span class="comment">// =&gt; "[object object]"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数组</strong>是调用<code>join()</code>方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].toString() 					<span class="comment">// =&gt; "1,2,3"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>函数</strong>则是转换成源代码字符串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; f(x); &#125;).toString() 	<span class="comment">// =&gt; "function(x)&#123; f(x); &#125;"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Date类型</strong>会返回一个可读的日期和时间字符串:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">0</span>, <span class="number">1</span>).toString() 	<span class="comment">// =&gt; "Fri Jan 01 2010 00:00:00 GMT+0800 (China Standard Time)"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RegExp类</strong>则是转换成正则表达式字符串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/\d+<span class="regexp">/g.toString() 					/</span><span class="regexp">/ =&gt; "/</span>\\d+<span class="regexp">/g"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>valueOf()</code>方法：</p>
+<ul>
+<li>如果对象存在任意原始值，默认将对象转换成它的原始值（比如各种原始对象的包装对象）</li>
+<li>一般，都是简单的返回对象本身</li>
+<li>特殊的是：<strong>Date</strong>类型，日期类的<code>valueOf()</code>会返回一个内部表示：从1970年1月1日以来的毫秒数：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">   d.valueOf() 					<span class="comment">// =&gt; 1262275200000</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>对象到字符串的转换步骤：<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-4-18/49990859-file_1492446304461_d920.png" alt=""></p>
+</li>
+<li><p>对象到数字的过程：基本上和上面一致，只不过会先调用<code>valueOf()</code>的方法。</p>
+</li>
+</ol>
+<h2 id="转换和相等性"><a href="#转换和相等性" class="headerlink" title="转换和相等性"></a>转换和相等性</h2><ol>
+<li>用<code>==</code>作比较时，为了保持两端的类型一致，会做一些类型转换</li>
+<li>用<code>===</code>作比较时，并不会做任何类型转换</li>
+<li>在做转换的时候，一个值能转换成另一个值，并不意味着这两个值相等</li>
+</ol>
+<h3 id="和"><a href="#和" class="headerlink" title="===和=="></a><code>===</code>和<code>==</code></h3><h4 id="严格相等"><a href="#严格相等" class="headerlink" title="===严格相等"></a><code>===</code>严格相等</h4><ol>
+<li>不相等的情况：<ul>
+<li>两个值类型不同</li>
+<li>其中一个值为<code>NaN</code>或者两个都为<code>NaN</code>（需要强调：<strong><code>NaN</code>和任何值都不相等，包括其本身。可以用<code>x!==x</code>来判断x是否为<code>NaN</code></strong>)。</li>
+</ul>
+</li>
+<li>相等的情况<ul>
+<li>都是<code>null</code>或者都是<code>undefined</code></li>
+<li>两个值为数字，且数值相等（包括0和-0的情况）</li>
+<li>两个值都为布尔值，且都是<code>true</code>或<code>false</code></li>
+<li>两个值都是字符串，且它们长度一致，对应位上的值都相等</li>
+<li>两个值都是引用值，且他们指向同一个对象。数组或函数</li>
+</ul>
+</li>
+</ol>
+<h4 id="相等"><a href="#相等" class="headerlink" title="==相等"></a><code>==</code>相等</h4><ol>
+<li>两个值类型相同，和严格相等的比较规则一样，即它们严格相等时，才会想等。</li>
+<li>两个值类型不同：<ul>
+<li>一个是<code>null</code>，一个是<code>undefined</code>，认为其相等</li>
+<li>如果一个值是数字，一个是字符串，则会<strong>先将字符串转换成数字</strong>,然后用转换后的值进行比较</li>
+<li>如果一个值是<code>true</code>，则将其转换成1再比较；如果是<code>false</code>，则将其转换成0</li>
+<li>对象和数字或字符串的比较，遵循上文的规则将对象转换成原始值再进行比较（除了日期类以外，都是先用<code>valueOf()</code>再用<code>toString()</code>）</li>
+</ul>
+</li>
+<li>小例子：<code>&quot;1&quot; == true</code>，答案是相等的，分成两步：一是将<code>true</code>转换成<code>1</code>；而是将<code>&quot;1&quot;</code>转换成<code>1</code>。</li>
+</ol>
+<h2 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h2><ol>
+<li>除了<code>null</code>和<code>undefined</code>之外的任何值都有<code>toString()</code>方法</li>
+<li><p><strong>数字转字符串</strong>：</p>
+<ul>
+<li><p><code>Number</code>的<code>toString()</code>的方法可以设置基数，表示转换结果的进制：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">17</span>;</span><br><span class="line">binary_string = n.toString();</span><br><span class="line">binary_string = n.toString(<span class="number">2</span>); 		<span class="comment">// Evaluates to "10001"</span></span><br><span class="line">octal_string = <span class="string">"0"</span> + n.toString(<span class="number">8</span>); <span class="comment">// Evaluates to "021"</span></span><br><span class="line">hex_string = <span class="string">"0x"</span> + n.toString(<span class="number">16</span>); <span class="comment">// Evaluates to "0x11"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>toFixed()</code>, <code>toExponential()</code>和<code>toPrecision()</code>，用来控制输出的小数点位置和有效位数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">123456.789</span>;</span><br><span class="line">n.toFixed(<span class="number">0</span>); <span class="comment">// "123457"</span></span><br><span class="line">n.toFixed(<span class="number">2</span>); <span class="comment">// "123456.79"</span></span><br><span class="line">n.toFixed(<span class="number">5</span>); <span class="comment">// "123456.78900"</span></span><br><span class="line">n.toExponential(<span class="number">1</span>); <span class="comment">// "1.2e+5"</span></span><br><span class="line">n.toExponential(<span class="number">3</span>); <span class="comment">// "1.235e+5"</span></span><br><span class="line">n.toPrecision(<span class="number">4</span>); <span class="comment">// "1.235e+5"</span></span><br><span class="line">n.toPrecision(<span class="number">7</span>); <span class="comment">// "123456.8"</span></span><br><span class="line">n.toPrecision(<span class="number">10</span>); <span class="comment">// "123456.7890"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>字符串转数字</strong>：<code>parseInt</code>和<code>parseFloat</code>（这两个函数都会跳过任意数量的前置空格，尽可能解析更多的数值字符，并忽略后面的内容）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"3 blind mice"</span>) <span class="comment">// =&gt; 3</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">" 3.14 meters"</span>) <span class="comment">// =&gt; 3.14</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"-12.34"</span>) <span class="comment">// =&gt; -12</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0xFF"</span>) <span class="comment">// =&gt; 255</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0xff"</span>) <span class="comment">// =&gt; 255</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"-0XFF"</span>) <span class="comment">// =&gt; -255</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">".1"</span>) <span class="comment">// =&gt; 0.1</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0.1"</span>) <span class="comment">// =&gt; 0</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">".1"</span>) <span class="comment">// =&gt; NaN: integers can't start with "."</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">"$72.47"</span>); <span class="comment">// =&gt; NaN: numbers can't start with "$"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中<code>parseInt()</code>还可以设置第二个参数，用来表示第一个参数的进制<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"11"</span>, <span class="number">2</span>); <span class="comment">// =&gt; 3 (1*2 + 1)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"ff"</span>, <span class="number">16</span>); <span class="comment">// =&gt; 255 (15*16 + 15)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"zz"</span>, <span class="number">36</span>); <span class="comment">// =&gt; 1295 (35*36 + 35)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"077"</span>, <span class="number">8</span>); <span class="comment">// =&gt; 63 (7*8 + 7)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"077"</span>, <span class="number">10</span>); <span class="comment">// =&gt; 77 (7*10 + 7)</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2017/04/15/JavaScript类型与相等性/" class="article-date">
+  <time datetime="2017-04-15T06:18:00.000Z" itemprop="datePublished">2017-04-15</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/前端笔记/">前端笔记</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/05/16/JavaScript中四种不同的属性检测方式比较/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript中四种不同的属性检测方式比较
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2017/04/03/CSS@12布局篇/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS@12布局篇</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

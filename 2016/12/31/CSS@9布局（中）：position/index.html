@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS@布局（中）：position | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS布局（中）：positionposition 定位方式position:static 默认定位默认的定位方式，元素在文档流中，无法用top，right，bottom，left进行定位  position:relative 相对定位 仍在文档流中 参照物为元素本身 相对定位元素层级较高  解释：  仍在文档流中：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的">
+<meta name="keywords" content="前端,笔记,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS@布局（中）：position">
+<meta property="og:url" content="http://jackieanxis.github.io/2016/12/31/CSS@9布局（中）：position/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="CSS布局（中）：positionposition 定位方式position:static 默认定位默认的定位方式，元素在文档流中，无法用top，right，bottom，left进行定位  position:relative 相对定位 仍在文档流中 参照物为元素本身 相对定位元素层级较高  解释：  仍在文档流中：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png">
+<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS@布局（中）：position">
+<meta name="twitter:description" content="CSS布局（中）：positionposition 定位方式position:static 默认定位默认的定位方式，元素在文档流中，无法用top，right，bottom，left进行定位  position:relative 相对定位 仍在文档流中 参照物为元素本身 相对定位元素层级较高  解释：  仍在文档流中：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的">
+<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-CSS@9布局（中）：position" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS@布局（中）：position
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h1 id="CSS布局（中）：position"><a href="#CSS布局（中）：position" class="headerlink" title="CSS布局（中）：position"></a>CSS布局（中）：position</h1><h2 id="position-定位方式"><a href="#position-定位方式" class="headerlink" title="position 定位方式"></a><code>position</code> 定位方式</h2><h3 id="position-static-默认定位"><a href="#position-static-默认定位" class="headerlink" title="position:static 默认定位"></a><code>position:static</code> 默认定位</h3><p>默认的定位方式，元素在文档流中，无法用<code>top</code>，<code>right</code>，<code>bottom</code>，<code>left</code>进行定位</p>
+<hr>
+<h3 id="position-relative-相对定位"><a href="#position-relative-相对定位" class="headerlink" title="position:relative 相对定位"></a><code>position:relative</code> 相对定位</h3><ul>
+<li>仍在文档流中</li>
+<li>参照物为元素本身</li>
+<li>相对定位元素层级较高</li>
+</ul>
+<p><strong>解释：</strong></p>
+<ul>
+<li><p><strong>仍在文档流中</strong>：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的元素不会因此左移，比如这样：<br><div style="margin:10px auto 0; height: 150px; width: 410px;font-family: consolas;"><div style="margin:0 auto;height:150px;width:200px; display: inline-block;"><div style="width: 200px; height: 50px; background-color: gold;"></div><div style="width: 200px; height: 50px; background-color: lightseagreen;color:white; line-height: 50px; text-align: center;">position: static;</div><div style="width: 200px; height: 50px; background-color: pink;"></div></div> <div style="margin:0 auto;height:200px;width:200px; display: inline-block;"><div style="width: 200px; height: 50px; background-color: gold;"></div><div style="width: 200px; height: 50px; background-color: lightseagreen; position: relative; left: 10px; top: 10px;color:white; line-height: 50px; text-align: center;">position: relative;</div><div style="width: 200px; height: 50px; background-color: pink;"></div></div></div></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.grandparent</span> &#123;</span></span><br><span class="line"><span class="undefined">        margin: 10px auto 0;</span></span><br><span class="line"><span class="undefined">        height: 150px;</span></span><br><span class="line"><span class="undefined">        width: 410px;</span></span><br><span class="line"><span class="undefined">        font-family: consolas;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="undefined">        margin: 0 auto;</span></span><br><span class="line"><span class="undefined">        height: 150px;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.element</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.first</span> &#123;</span></span><br><span class="line"><span class="undefined">        background-color: gold;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.second</span> &#123;</span></span><br><span class="line"><span class="undefined">        background-color: lightseagreen;</span></span><br><span class="line"><span class="undefined">        color: white;</span></span><br><span class="line"><span class="undefined">        line-height: 50px;</span></span><br><span class="line"><span class="undefined">        text-align: center;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.third</span> &#123;</span></span><br><span class="line"><span class="undefined">        background-color: pink;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.relative</span> &#123;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">        left: 10px;</span></span><br><span class="line"><span class="undefined">        top: 10px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grandparent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element first"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element second"</span>&gt;</span>position: static;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element third"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element first"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element second relative"</span>&gt;</span>position: relative;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element third"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>参照物为元素本身</strong>：也就是，元素通过<code>top</code>,<code>left</code>等定位偏移属性，其位移的原点，是元素本来的位置。比如上面右边的，其CSS样式是这样的，向右和向下偏移了<code>10px</code>：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.second-child</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: lightseagreen;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">color</span>:white;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">50px</span>;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>相对定位元素层级较高</strong>： 设置了<code>position</code>的元素会比未设置的元素层级要高。可以这么理解，设置了<code>position</code>视作一类，没有设置的视作一类。他们分别计算层级，而前者一定高于后者。<br><div style="position: relative; z-index: 10;"><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;position: absolute;background-color: pink;">absolute</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;position: relative;left: 100px;top: 100px;background-color: lightblue;">relative</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;">default</div></div><br><div style="position: relative; z-index: 1;"><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;position: absolute;background-color: pink;">absolute</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;position: relative;left: 100px;top:0;background-color: lightblue;">relative</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;">default</div></div></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">		<span class="selector-class">.element</span>&#123;</span></span><br><span class="line"><span class="undefined">			display: inline-block;</span></span><br><span class="line"><span class="undefined">			width: 200px;</span></span><br><span class="line"><span class="undefined">			height: 200px;</span></span><br><span class="line"><span class="undefined">			border: 3px solid white;</span></span><br><span class="line"><span class="undefined">			background-color: lightseagreen;</span></span><br><span class="line"><span class="undefined">			color: white;</span></span><br><span class="line"><span class="undefined">			text-align: center;</span></span><br><span class="line"><span class="undefined">			line-height: 200px;</span></span><br><span class="line"><span class="undefined">			font-family: consolas;</span></span><br><span class="line"><span class="undefined">			font-size: 24px;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.absolute</span>&#123;</span></span><br><span class="line"><span class="undefined">			position: absolute;</span></span><br><span class="line"><span class="undefined">			background-color: pink;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.relative</span>&#123;</span></span><br><span class="line"><span class="undefined">			position: relative;</span></span><br><span class="line"><span class="undefined">			left: 100px;</span></span><br><span class="line"><span class="undefined">			top: 100px;</span></span><br><span class="line"><span class="undefined">			background-color: lightblue;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position: relative; z-index: 10;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element absolute"</span>&gt;</span>absolute<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element relative"</span>&gt;</span>relative<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element default"</span>&gt;</span>default<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position: relative; z-index: 1;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element absolute"</span>&gt;</span>absolute<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element relative"</span> <span class="attr">style</span>=<span class="string">"top: 0;"</span>&gt;</span>relative<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element default"</span>&gt;</span>default<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>你会发现这段代码的效果里：</p>
+<pre><code>- 第一行中`relative`的元素覆盖在了它后面的`default`元素上，因为`default`元素没有设置`position`
+- 第一行的`relative`元素还覆盖了第二行的`relative`元素，是因为它们父元素的`z-index`值的关系。
+</code></pre><h3 id="position-absolute-绝对定位"><a href="#position-absolute-绝对定位" class="headerlink" title="position: absolute 绝对定位"></a><code>position: absolute</code> 绝对定位</h3><ul>
+<li>脱离文档流（这个元素脱离了文档，浮出文档）</li>
+<li>参照物为第一个定位祖先/根元素（也就是html元素）</li>
+<li>默认宽度为内容宽度</li>
+</ul>
+<p><strong>解释：</strong></p>
+<ul>
+<li><p><strong>脱离文档流</strong>：意思就是，这个元素不再占用正常文档流中的空间，且定位方法也和一般元素不一样。比如下图中：<code>abosolute</code>的元素并没有占据文档的位置，而是浮在了上面，因为它脱离了文档流。具体原因会在下面讲到：<br><div style="position: relative; margin:0 auto;width:420px;"><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;">default</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;position: absolute;background-color: pink;width:120px;height: 80px;line-height: 80px;">absolute</div><div style="display: inline-block;width: 200px;height: 200px;border: 3px solid white;background-color: lightseagreen;color: white;text-align: center;line-height: 200px;font-family: consolas;font-size: 24px;">default</div></div></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">		<span class="selector-class">.parent</span>&#123;</span></span><br><span class="line"><span class="undefined">			position: relative;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>; <span class="comment">/*为了居中*/</span></span></span><br><span class="line"><span class="undefined">			width: 420px;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.element</span>&#123;</span></span><br><span class="line"><span class="undefined">			display: inline-block;</span></span><br><span class="line"><span class="undefined">			width: 200px;</span></span><br><span class="line"><span class="undefined">			height: 200px;</span></span><br><span class="line"><span class="undefined">			border: 3px solid white;</span></span><br><span class="line"><span class="undefined">			background-color: lightseagreen;</span></span><br><span class="line"><span class="undefined">			color: white;</span></span><br><span class="line"><span class="undefined">			text-align: center;</span></span><br><span class="line"><span class="undefined">			line-height: 200px;</span></span><br><span class="line"><span class="undefined">			font-family: consolas;</span></span><br><span class="line"><span class="undefined">			font-size: 24px;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="css">		<span class="selector-class">.absolute</span>&#123;</span></span><br><span class="line"><span class="undefined">			position: absolute;</span></span><br><span class="line"><span class="undefined">			background-color: pink;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">width</span><span class="selector-pseudo">:120px</span>;</span></span><br><span class="line"><span class="undefined">			height: 80px;</span></span><br><span class="line"><span class="undefined">			line-height: 80px;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element default"</span>&gt;</span>default<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element absolute"</span>&gt;</span>absolute<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"element default"</span>&gt;</span>default<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>参照物为第一个定位祖先/根元素</strong>：在相对定位元素中，我们提到，<code>relative</code>元素的参照物是元素本身，而<code>absolute</code>元素的参照物应该是第一个已定位的祖先，如果没有这样的祖先，那么它的参照物就是根元素，也就是<code>&lt;html&gt;</code>。那么什么叫做<strong>已定位的祖先</strong>呢，就是它的已经设置了<code>position</code>值的祖先元素。</p>
+<ul>
+<li>第一点值得注意的是，即便对某个元素设置了<code>absolute</code>，如果没有进行定位，它会保持在原来的位置上。</li>
+<li>第二点值得注意的是，默认子元素会被包含在父元素的<code>content-box</code>里面，但是<code>absolute</code>元素定位的原点，是它的第一个已定位的祖先的<code>padding-box</code>左上角。<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png" alt=""></li>
+</ul>
+</li>
+<li><p><strong>默认宽度为内容宽度</strong>：即便为这个<code>position:absolute</code>的元素设置成<code>block</code>元素，这个元素默认的宽度仍是内容的宽度。</p>
+</li>
+</ul>
+<h3 id="position-fixed-固定定位"><a href="#position-fixed-固定定位" class="headerlink" title="position: fixed 固定定位"></a><code>position: fixed</code> 固定定位</h3><ul>
+<li>脱离文档流（这个元素脱离了文档，浮出文档）</li>
+<li>参照物为视窗</li>
+<li><p>默认宽度为内容宽度</p>
+</li>
+<li><p><strong>参照物为视窗</strong>：视窗的意思就是浏览器窗口。不再多做解释。可以自己尝试一下。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2016/12/31/CSS@9布局（中）：position/" class="article-date">
+  <time datetime="2016-12-30T16:50:00.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/frontend/categories/前端笔记/">前端笔记</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/01/14/CSS@10布局（下）：float/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS@10布局（下）：float
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2016/12/09/CSS@8布局（上）：display&z-index/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS@8布局（上）：display&amp;amp;z-index</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

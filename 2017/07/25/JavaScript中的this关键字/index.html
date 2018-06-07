@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript中的this关键字 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="this的五种不同情形默认情况默认情况下，纯粹函数调用时，因为没有调用该方法的对象，故而此时的this是undefined，JavaScript解释器会自动把这个对象指向全局对象Global，在浏览器环境下，也即window对象。 window.x = &apos;Jackie&apos;function func() &amp;#123;  console.log(this.x)&amp;#125;func() // Jackie">
+<meta name="keywords" content="前端,笔记,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的this关键字">
+<meta property="og:url" content="http://jackieanxis.github.io/2017/07/25/JavaScript中的this关键字/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="this的五种不同情形默认情况默认情况下，纯粹函数调用时，因为没有调用该方法的对象，故而此时的this是undefined，JavaScript解释器会自动把这个对象指向全局对象Global，在浏览器环境下，也即window对象。 window.x = &apos;Jackie&apos;function func() &amp;#123;  console.log(this.x)&amp;#125;func() // Jackie">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-01-28T08:15:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中的this关键字">
+<meta name="twitter:description" content="this的五种不同情形默认情况默认情况下，纯粹函数调用时，因为没有调用该方法的对象，故而此时的this是undefined，JavaScript解释器会自动把这个对象指向全局对象Global，在浏览器环境下，也即window对象。 window.x = &apos;Jackie&apos;function func() &amp;#123;  console.log(this.x)&amp;#125;func() // Jackie">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-JavaScript中的this关键字" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript中的this关键字
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h2 id="this的五种不同情形"><a href="#this的五种不同情形" class="headerlink" title="this的五种不同情形"></a><code>this</code>的五种不同情形</h2><h3 id="默认情况"><a href="#默认情况" class="headerlink" title="默认情况"></a>默认情况</h3><p>默认情况下，纯粹函数调用时，因为没有调用该方法的对象，故而此时的<code>this</code>是<code>undefined</code>，JavaScript解释器会自动把这个对象指向全局对象Global，在浏览器环境下，也即window对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.x = <span class="string">'Jackie'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func() <span class="comment">// Jackie</span></span><br></pre></td></tr></table></figure>
+<p>阮一峰老师的博客中提到：</p>
+<blockquote>
+<p>在严格模式（<code>&quot;use strict&quot;</code>）下，会禁止<code>this</code>指向全局对象，此时的<code>this</code>会是<code>undefined</code>。</p>
+</blockquote>
+<p>事实上，<a href="http://es5.github.io/#x10.4.3" target="_blank" rel="noopener">ES5的规范</a> 中修改了描述，仅当非严格模式下才会有 <code>this</code> 指向的转变。所以此时<code>this</code>无法改变指向，就会是<code>undefined</code>，但并不是说无法指向全局对象。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo.call(<span class="keyword">this</span>) <span class="comment">// Window</span></span><br></pre></td></tr></table></figure>
+<h3 id="作为对象的方法调用"><a href="#作为对象的方法调用" class="headerlink" title="作为对象的方法调用"></a>作为对象的方法调用</h3><p>此时<code>this</code>指向调用这个方法的对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">'Property of Window'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.x = <span class="string">'Property of obj'</span></span><br><span class="line">obj.f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.f() <span class="comment">// Property of obj</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 值得注意的情况</span></span><br><span class="line"><span class="keyword">var</span> f = obj.f</span><br><span class="line">f() <span class="comment">// Property of Window</span></span><br></pre></td></tr></table></figure>
+<h3 id="call、apply和bind的显式绑定"><a href="#call、apply和bind的显式绑定" class="headerlink" title="call、apply和bind的显式绑定"></a><code>call</code>、<code>apply</code>和<code>bind</code>的显式绑定</h3><p><code>call</code>、<code>apply</code>和<code>bind</code>都可以改变一个函数的<code>this</code>指向。</p>
+<h4 id="call和apply"><a href="#call和apply" class="headerlink" title="call和apply"></a><code>call</code>和<code>apply</code></h4><p><code>call</code>和<code>apply</code>会将它们的调用对象的<code>this</code>指向它们的第一个参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'Property of Window'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  x: <span class="string">"Property of obj"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f.apply(obj) 	<span class="comment">// "Property of obj"</span></span><br></pre></td></tr></table></figure>
+<p>当传入的第一个参数为undefined，或者不传入参数时，在非严格模式下，自动会将<code>this</code>指向全局对象Global，在浏览器里是<code>window</code>对象，严格模式下则会是<code>undefined</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f.apply() 			<span class="comment">// window</span></span><br><span class="line">f.apply(<span class="literal">undefined</span>) 	<span class="comment">// window</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ff</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">ff.apply() 			<span class="comment">// undefined</span></span><br><span class="line">ff.apply(<span class="literal">undefined</span>) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p><code>call</code>和<code>apply</code>没有本质区别。唯一的区别在于：</p>
+<blockquote>
+<p><code>call()</code>方法接受的是<strong>若干个参数的列表</strong>，而<code>apply()</code>方法接受的是<strong>一个包含多个参数的数组</strong>。</p>
+</blockquote>
+<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a><code>bind</code></h4><p><code>bind</code>和前面两者也并未有什么本质的区别，只不过<code>bind</code>将第一个参数绑定当调用函数的<code>this</code>上，并将这个函数返回（不执行）。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'Property of Window'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  x: <span class="string">"Property of obj"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ff = f.bind(obj)</span><br><span class="line">ff() <span class="comment">// "Property of obj"</span></span><br></pre></td></tr></table></figure>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>当一个函数被当做<strong>构造函数</strong>，用<code>new</code>关键字新建一个对象的时候，这个函数内部的<code>this</code>以及原型链上的<code>this</code>都会指向这个新建的对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Jackie</span>(<span class="params">para</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.para = para</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">Jackie.prototype.log = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Jackie(<span class="string">'hehe'</span>) 				<span class="comment">// Window</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Jackie(<span class="string">'haha'</span>) 	<span class="comment">// Jackie &#123;para: "haha"&#125;</span></span><br><span class="line">p.log() 					<span class="comment">// Jackie &#123;para: "haha"&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他值得注意的绑定"><a href="#其他值得注意的绑定" class="headerlink" title="其他值得注意的绑定"></a>其他值得注意的绑定</h3><h4 id="放在超时代码里"><a href="#放在超时代码里" class="headerlink" title="放在超时代码里"></a>放在超时代码里</h4><p>JavaScript中超时调用的代码，函数中this的值会指向window对象，在严格模式下也一样。因为超时调用的代码都会有一个隐式绑定：<code>setTimeout(f, time) == setTimeout(f.bind(window), time)</code>。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">"use stric"</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">'Property of Window'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.x = <span class="string">'Property of obj'</span></span><br><span class="line">obj.ff = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">        &#125;, <span class="number">100</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.ff() 	<span class="comment">// Property of Window</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以这么解决问题</span></span><br><span class="line">obj.fff = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span></span><br><span class="line">    setTimeout(</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(that.x)</span><br><span class="line">        &#125;, <span class="number">100</span>)</span><br><span class="line">&#125;</span><br><span class="line">obj.fff() 	<span class="comment">// Property of obj</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="事件监听函数中的this"><a href="#事件监听函数中的this" class="headerlink" title="事件监听函数中的this"></a>事件监听函数中的this</h4><p>事件监听函数中的<code>this</code>指向监听对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> one = <span class="built_in">document</span>.getElementById(<span class="string">'one'</span>)</span><br><span class="line">one.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">one.click() <span class="comment">// &lt;div id="one"&gt;&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>箭头函数中<code>this</code>的指向，在函数定义时即绑定完毕，且后续无法更改。（即，会跟它的上级作用域的<code>this</code>指针保持一致）</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  x: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var f1 = () =&gt; &#123;</span><br><span class="line">  console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">f1.apply(obj) // Window</span><br><span class="line"></span><br><span class="line">var f2 = function () &#123;</span><br><span class="line">  var f3 = () =&gt; &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">  &#125;</span><br><span class="line">  return f3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var f4 = f2.apply(obj)</span><br><span class="line">f4() // Object &#123;x: 1&#125;</span><br></pre></td></tr></table></figure>
+<p>一个更神奇的例子，超时调用的代码在定义时，绑定了<code>this</code>的指向。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> id = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line">foo.call(&#123; <span class="attr">id</span>: <span class="number">42</span> &#125;); <span class="comment">// id: 42</span></span><br></pre></td></tr></table></figure>
+<h2 id="绑定的优先级"><a href="#绑定的优先级" class="headerlink" title="绑定的优先级"></a>绑定的优先级</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">name</span>: <span class="string">'obj'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> robj = &#123;<span class="attr">x</span>: <span class="number">-1</span>, <span class="attr">name</span>: <span class="string">'robj'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> factory = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> factoryBind = factory.bind(obj)</span><br><span class="line">robj.factory = factoryBind</span><br><span class="line">robj.factory(<span class="number">2</span>) <span class="comment">// Object &#123;x: 2, name: "obj"&#125;，作为方法的绑定的优先级低于bind的显式绑定</span></span><br><span class="line"></span><br><span class="line">factoryBind.call(robj, <span class="number">3</span>) <span class="comment">// Object &#123;x: 3, name: "obj"&#125;，call的优先级低于bind</span></span><br><span class="line"><span class="built_in">console</span>.log(robj) <span class="comment">// Object &#123;x: -1, name: "robj", factory: function&#125;，未对robj进行修改</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// Object &#123;x: 3, name: "obj"&#125;，修改的是obj，因为this指针指向未变化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> factoryBind(<span class="number">4</span>) <span class="comment">// factory &#123;x: 4&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p) <span class="comment">// factory &#123;x: 4&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// Object &#123;x: 3, name: "obj"&#125;，构造函数绑定的优先级高于bind的显式绑定</span></span><br></pre></td></tr></table></figure>
+<p>可以见得，优先级从高到低：</p>
+<ol>
+<li><code>new</code>，构造绑定</li>
+<li><code>bind</code>，显式绑定</li>
+<li><code>call</code>/<code>apply</code>，显示绑定</li>
+<li>作为方法绑定</li>
+<li>默认绑定</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2017/07/25/JavaScript中的this关键字/" class="article-date">
+  <time datetime="2017-07-24T16:00:00.000Z" itemprop="datePublished">2017-07-25</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/07/27/JavaScript闭包/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2017/07/24/JavaScript执行环境和作用域/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript执行环境和作用域</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

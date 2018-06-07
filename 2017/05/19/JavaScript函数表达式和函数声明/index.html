@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript函数表达式和函数声明 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="函数表达式和函数声明 函数声明(Function Declaration):  形如function &amp;lt;function_name&amp;gt; () {}，四个元素缺一不可 不能够是表达式的其中一部分   函数表达式（Function Expression）:  最常见的形式：var func = function () {} 函数表达式一般是赋值表达式的一部分，不能单独存在。 有时候，会给函数">
+<meta name="keywords" content="前端,笔记,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript函数表达式和函数声明">
+<meta property="og:url" content="http://jackieanxis.github.io/2017/05/19/JavaScript函数表达式和函数声明/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="函数表达式和函数声明 函数声明(Function Declaration):  形如function &amp;lt;function_name&amp;gt; () {}，四个元素缺一不可 不能够是表达式的其中一部分   函数表达式（Function Expression）:  最常见的形式：var func = function () {} 函数表达式一般是赋值表达式的一部分，不能单独存在。 有时候，会给函数">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-06-07T11:19:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript函数表达式和函数声明">
+<meta name="twitter:description" content="函数表达式和函数声明 函数声明(Function Declaration):  形如function &amp;lt;function_name&amp;gt; () {}，四个元素缺一不可 不能够是表达式的其中一部分   函数表达式（Function Expression）:  最常见的形式：var func = function () {} 函数表达式一般是赋值表达式的一部分，不能单独存在。 有时候，会给函数">
+  
+  
+    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+  
+  <link rel="stylesheet" href="/frontend/css/typing.css">
+  <link rel="stylesheet" href="/frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-JavaScript函数表达式和函数声明" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/others">Others</a>
+    
+      <a class="main-nav-link" href="/frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript函数表达式和函数声明
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h2 id="函数表达式和函数声明"><a href="#函数表达式和函数声明" class="headerlink" title="函数表达式和函数声明"></a>函数表达式和函数声明</h2><ol>
+<li><p><strong>函数声明</strong>(Function Declaration):</p>
+<ul>
+<li>形如<code>function &lt;function_name&gt; () {}</code>，四个元素缺一不可</li>
+<li>不能够是表达式的其中一部分</li>
+</ul>
+</li>
+<li><p><strong>函数表达式</strong>（Function Expression）:</p>
+<ul>
+<li>最常见的形式：<code>var func = function () {}</code></li>
+<li>函数表达式一般是赋值表达式的一部分，不能单独存在。</li>
+<li><p>有时候，会给函数加上名字，像这样<code>var func = function f() {}</code>，但这实际上没什么用，跟用匿名函数赋值<code>var func = function() {}</code>是一样的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">f() <span class="comment">// Uncaught ReferenceError: f is not defined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还有一种函数表达式，存在于<strong>自执行函数</strong>（self-invoking function）中。比如，下面这种形式，也是函数表达式。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(<span class="string">"hello!"</span>);</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="两者之间的异同"><a href="#两者之间的异同" class="headerlink" title="两者之间的异同"></a>两者之间的异同</h3><ul>
+<li>同：这两个方法都能创建出一个函数，并且这个函数的名字都叫<code>foo</code></li>
+<li><p>异：</p>
+<ol>
+<li><p><strong>函数声明</strong>的方法，存在变量提升的情况，也就是会将这个函数声明提升到作用域最前面。于是，在函数声明前，就能调用这个函数。<br><strong>函数表达式</strong>的方法，其实也存在变量提升的情况，只不过先声明，但给这个变量赋值为<code>undefined</code>。在函数声明前调用这个函数就会报错。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	a() <span class="comment">// a</span></span><br><span class="line">	b() <span class="comment">// Uncaught TypeError: b is not a function</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'a'</span>)&#125; <span class="comment">// 函数声明</span></span><br><span class="line">	<span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">'b'</span>)&#125; <span class="comment">// 函数表达式</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用<strong>函数声明</strong>的方法定义的函数，可以被放入执行环境的变量对象（Variable Object）中；而<strong>函数表达式</strong>定义的函数，不会被放入执行变量的 </p>
+</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/frontend/2017/05/19/JavaScript函数表达式和函数声明/" class="article-date">
+  <time datetime="2017-05-18T16:53:00.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/frontend/2017/07/24/JavaScript执行环境和作用域/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript执行环境和作用域
+        
+      </div>
+    </a>
+  
+  
+    <a href="/frontend/2017/05/16/JavaScript中四种不同的属性检测方式比较/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript中四种不同的属性检测方式比较</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/frontend/fancybox/jquery.fancybox.css">
+  <script src="/frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
