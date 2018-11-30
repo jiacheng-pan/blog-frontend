@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="Jackie&#39;Front End Blog">
 <meta property="og:description" content="CSS布局（中）：positionposition 定位方式position:static 默认定位默认的定位方式，元素在文档流中，无法用top，right，bottom，left进行定位  position:relative 相对定位 仍在文档流中 参照物为元素本身 相对定位元素层级较高  解释：  仍在文档流中：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png">
-<meta property="og:updated_time" content="2017-08-26T03:40:08.000Z">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/17-1-13/69220800-file_1484320283452_92ff.png">
+<meta property="og:updated_time" content="2018-11-30T03:02:51.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS@布局（中）：position">
 <meta name="twitter:description" content="CSS布局（中）：positionposition 定位方式position:static 默认定位默认的定位方式，元素在文档流中，无法用top，right，bottom，left进行定位  position:relative 相对定位 仍在文档流中 参照物为元素本身 相对定位元素层级较高  解释：  仍在文档流中：指的是，这个元素仍然会按照原来的位置占据一定的区域，下面的元素不会因此上来，右边的">
-<meta name="twitter:image" content="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/17-1-13/69220800-file_1484320283452_92ff.png">
   
   
-    <link rel="icon" href="http://o6vut8vrh.bkt.clouddn.com/avatar.png">
+    <link rel="icon" href="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/avatar.png">
   
   <link rel="stylesheet" href="/blog-frontend/css/typing.css">
   <link rel="stylesheet" href="/blog-frontend/css/donate.css">
@@ -114,7 +114,7 @@
 <li><p><strong>参照物为第一个定位祖先/根元素</strong>：在相对定位元素中，我们提到，<code>relative</code>元素的参照物是元素本身，而<code>absolute</code>元素的参照物应该是第一个已定位的祖先，如果没有这样的祖先，那么它的参照物就是根元素，也就是<code>&lt;html&gt;</code>。那么什么叫做<strong>已定位的祖先</strong>呢，就是它的已经设置了<code>position</code>值的祖先元素。</p>
 <ul>
 <li>第一点值得注意的是，即便对某个元素设置了<code>absolute</code>，如果没有进行定位，它会保持在原来的位置上。</li>
-<li>第二点值得注意的是，默认子元素会被包含在父元素的<code>content-box</code>里面，但是<code>absolute</code>元素定位的原点，是它的第一个已定位的祖先的<code>padding-box</code>左上角。<br><img src="http://o6vut8vrh.bkt.clouddn.com/17-1-13/69220800-file_1484320283452_92ff.png" alt=""></li>
+<li>第二点值得注意的是，默认子元素会被包含在父元素的<code>content-box</code>里面，但是<code>absolute</code>元素定位的原点，是它的第一个已定位的祖先的<code>padding-box</code>左上角。<br><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/17-1-13/69220800-file_1484320283452_92ff.png" alt=""></li>
 </ul>
 </li>
 <li><p><strong>默认宽度为内容宽度</strong>：即便为这个<code>position:absolute</code>的元素设置成<code>block</code>元素，这个元素默认的宽度仍是内容的宽度。</p>
