@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>记一个Promise问题 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我们来观察以下四段代码的区别： // 1 setTimeout throwconst p1 = new Promise(function (resolve, reject) &amp;#123;  setTimeout(function () &amp;#123; throw new Error(&apos;test&apos;) &amp;#125;, 0)&amp;#125;);p1.catch(function (error) &amp;#123;">
+<meta name="keywords" content="前端,笔记,JavaScript,Promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一个Promise问题">
+<meta property="og:url" content="http://jackieanxis.github.io/2018/07/08/记一个Promise问题/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="我们来观察以下四段代码的区别： // 1 setTimeout throwconst p1 = new Promise(function (resolve, reject) &amp;#123;  setTimeout(function () &amp;#123; throw new Error(&apos;test&apos;) &amp;#125;, 0)&amp;#125;);p1.catch(function (error) &amp;#123;">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-07-08T12:53:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一个Promise问题">
+<meta name="twitter:description" content="我们来观察以下四段代码的区别： // 1 setTimeout throwconst p1 = new Promise(function (resolve, reject) &amp;#123;  setTimeout(function () &amp;#123; throw new Error(&apos;test&apos;) &amp;#125;, 0)&amp;#125;);p1.catch(function (error) &amp;#123;">
+  
+  
+    <link rel="icon" href="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/avatar.png">
+  
+  <link rel="stylesheet" href="/blog-frontend/css/typing.css">
+  <link rel="stylesheet" href="/blog-frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-记一个Promise问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-frontend">FrontEnd</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-others">Others</a>
+    
+      <a class="main-nav-link" href="/blog-frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记一个Promise问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>我们来观察以下四段代码的区别：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1 setTimeout throw</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'test'</span>) &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;);</span><br><span class="line">p1.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'Catch1: '</span>, error) &#125;);</span><br><span class="line"><span class="comment">// Uncaught Error: test</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 setTimeout reject</span></span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'test'</span>)) &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;);</span><br><span class="line">p2.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'Catch2: '</span>, error) &#125;);</span><br><span class="line"><span class="comment">// Catch2:  Error: test</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 throw</span></span><br><span class="line"><span class="keyword">const</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'test'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">p3.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'Catch3: '</span>, error) &#125;);</span><br><span class="line"><span class="comment">// Catch3:  Error: test</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 reject</span></span><br><span class="line"><span class="keyword">const</span> p4 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'test'</span>));</span><br><span class="line">&#125;);</span><br><span class="line">p4.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'Catch4: '</span>, error) &#125;);</span><br><span class="line"><span class="comment">// Catch4:  Error: test</span></span><br></pre></td></tr></table></figure>
+<p><code>then</code>和<code>catch</code>返回新的<code>Promise</code>对象，<code>finally</code>返回本身。</p>
+<p><code>all</code>的<code>then</code>，<code>catch</code>的调用优先级低于<code>all</code>的元素本身的<code>then</code>，<code>catch</code>。</p>
+<p>以下两者代码的区别：(定义Promise的时候会执行其中的代码)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'now'</span>);</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(f);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'next'</span>);</span><br><span class="line"><span class="comment">// next</span></span><br><span class="line"><span class="comment">// now</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'now'</span>);</span><br><span class="line">(</span><br><span class="line">  () =&gt; <span class="keyword">new</span> <span class="built_in">Promise</span>(</span><br><span class="line">    resolve =&gt; resolve(f())</span><br><span class="line">  )</span><br><span class="line">)();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'next'</span>);</span><br><span class="line"><span class="comment">// now</span></span><br><span class="line"><span class="comment">// next</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/blog-frontend/2018/07/08/记一个Promise问题/" class="article-date">
+  <time datetime="2018-07-08T12:00:00.000Z" itemprop="datePublished">2018-07-08</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/blog-frontend/2018/09/14/十分钟了解MobX/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          十分钟了解MobX
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog-frontend/2018/01/18/如何选择JavaScript构建工具之Babel、Browserify、Webpack、Grunt以及Gulp/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何选择JavaScript构建工具之Babel、Browserify、Webpack、Grunt以及Gulp</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog-frontend/fancybox/jquery.fancybox.css">
+  <script src="/blog-frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog-frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

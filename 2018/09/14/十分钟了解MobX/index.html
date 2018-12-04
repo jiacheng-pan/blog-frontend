@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>十分钟了解MobX | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考：Ten minute introduction to MobX and React Mobx是一种简单，可扩展且经过实战考验的状态管理解决方案。 本教程将在十分钟内教你MobX的所有重要概念。 MobX是一个独立的库，但大多数人都将它与React一起使用，本教程重点介绍了这种组合。 核心理念状态是每个应用程序的核心，许多状态管理解决方案试图限制可以修改状态的方式，例如通过使状态不可变。 Mo">
+<meta name="keywords" content="前端,笔记,JavaScript,React,Mobx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十分钟了解MobX">
+<meta property="og:url" content="http://jackieanxis.github.io/2018/09/14/十分钟了解MobX/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="参考：Ten minute introduction to MobX and React Mobx是一种简单，可扩展且经过实战考验的状态管理解决方案。 本教程将在十分钟内教你MobX的所有重要概念。 MobX是一个独立的库，但大多数人都将它与React一起使用，本教程重点介绍了这种组合。 核心理念状态是每个应用程序的核心，许多状态管理解决方案试图限制可以修改状态的方式，例如通过使状态不可变。 Mo">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://mobx.js.org/getting-started-assets/overview.png">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/8517669.jpg">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/62090457.jpg">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/88221181.jpg">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/27215063.jpg">
+<meta property="og:updated_time" content="2018-11-30T03:02:51.228Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十分钟了解MobX">
+<meta name="twitter:description" content="参考：Ten minute introduction to MobX and React Mobx是一种简单，可扩展且经过实战考验的状态管理解决方案。 本教程将在十分钟内教你MobX的所有重要概念。 MobX是一个独立的库，但大多数人都将它与React一起使用，本教程重点介绍了这种组合。 核心理念状态是每个应用程序的核心，许多状态管理解决方案试图限制可以修改状态的方式，例如通过使状态不可变。 Mo">
+<meta name="twitter:image" content="https://mobx.js.org/getting-started-assets/overview.png">
+  
+  
+    <link rel="icon" href="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/avatar.png">
+  
+  <link rel="stylesheet" href="/blog-frontend/css/typing.css">
+  <link rel="stylesheet" href="/blog-frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-十分钟了解MobX" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-frontend">FrontEnd</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-others">Others</a>
+    
+      <a class="main-nav-link" href="/blog-frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      十分钟了解MobX
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>参考：<a href="https://mobx.js.org/getting-started.html" target="_blank" rel="noopener">Ten minute introduction to MobX and React</a></p>
+<p>Mobx是一种简单，可扩展且经过实战考验的状态管理解决方案。 本教程将在十分钟内教你MobX的所有重要概念。 MobX是一个独立的库，但大多数人都将它与React一起使用，本教程重点介绍了这种组合。</p>
+<h2 id="核心理念"><a href="#核心理念" class="headerlink" title="核心理念"></a>核心理念</h2><p>状态是每个应用程序的核心，许多状态管理解决方案试图限制可以修改状态的方式，例如通过使状态不可变。</p>
+<p>MobX要让状态管理变得简单起来，它解决了根本问题：不允许产生前后不一致的状态。实现这一目标的策略很简单：能从应用的状态（state）中导出的任何派生值（derivation）都是自动导出的。</p>
+<p><img src="https://mobx.js.org/getting-started-assets/overview.png" alt=""></p>
+<ol>
+<li>首先有一个应用的<strong>状态（state）</strong>，可以是任何objects，arrays，promitives，references等等能够构建你的程序的东西。这些值是你的应用程序的元数据（data cells）</li>
+<li>其次是<strong>派生值（derivations）</strong>，可以是任何能自动从你的状态（state）中计算得到的值。</li>
+<li><strong>反应（reaction）</strong>和<strong>derivations</strong>很像，不一样的是，reaction是一个动作，它用于制动执行一些任务，通常是一些I/O相关的任务，它们能够确保在合理的时间时，DOM能够自动更新或者网络请求能够自动执行。</li>
+<li><strong>动作（actions）</strong>，只有actions能够去改变state，MobX确保所有state的变化都是通过action进行，并且会自动地、同步地被传递给derivation和reaction。</li>
+</ol>
+<h2 id="一个简单的例子：todo-store"><a href="#一个简单的例子：todo-store" class="headerlink" title="一个简单的例子：todo store"></a>一个简单的例子：todo store</h2><p>下面是一个简单的TodoStore，维护了一系列待办事项，还没引入MobX。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoStore</span> </span>&#123;</span><br><span class="line">	todos = [];</span><br><span class="line"></span><br><span class="line">	get completedTodosCount() &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>.todos.filter(</span><br><span class="line">			todo =&gt; todo.completed === <span class="literal">true</span></span><br><span class="line">		).length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	report() &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.todos.length === <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"&lt;none&gt;"</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">`Next todo: "<span class="subst">$&#123;<span class="keyword">this</span>.todos[<span class="number">0</span>].task&#125;</span>". `</span> +</span><br><span class="line">			<span class="string">`Progress: <span class="subst">$&#123;<span class="keyword">this</span>.completedTodosCount&#125;</span>/<span class="subst">$&#123;<span class="keyword">this</span>.todos.length&#125;</span>`</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    addTodo(task) &#123;</span><br><span class="line">		<span class="keyword">this</span>.todos.push(&#123;</span><br><span class="line">			task: task,</span><br><span class="line">			completed: <span class="literal">false</span>,</span><br><span class="line">            assignee: <span class="literal">null</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todoStore = <span class="keyword">new</span> TodoStore();</span><br></pre></td></tr></table></figure>
+<p>上面我们创建了一个带有todo集合的todoStore实例。为了确保我们看到更改的效果，我们在每次更改后调用todoStore.report并记录它。 请注意，report有意始终仅打印第一个任务。 它使这个例子有点人为，但正如你将在下面看到的，它很好地证明了MobX的依赖性跟踪是动态的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">todoStore.addTodo(<span class="string">"read MobX tutorial"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(todoStore.report()); <span class="comment">// Next todo: "read MobX tutorial". Progress: 0/1</span></span><br><span class="line"></span><br><span class="line">todoStore.addTodo(<span class="string">"try MobX"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(todoStore.report()); <span class="comment">// Next todo: "read MobX tutorial". Progress: 0/2</span></span><br><span class="line"></span><br><span class="line">todoStore.todos[<span class="number">0</span>].completed = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(todoStore.report()); <span class="comment">// Next todo: "read MobX tutorial". Progress: 1/2</span></span><br><span class="line"></span><br><span class="line">todoStore.todos[<span class="number">1</span>].task = <span class="string">"try MobX in own project"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(todoStore.report()); <span class="comment">// Next todo: "read MobX tutorial". Progress: 1/2</span></span><br><span class="line"></span><br><span class="line">todoStore.todos[<span class="number">0</span>].task = <span class="string">"grok MobX tutorial"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(todoStore.report()); <span class="comment">// Next todo: "grok MobX tutorial". Progress: 1/2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(todoStore.completedTodosCount); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="Becoming-reactive"><a href="#Becoming-reactive" class="headerlink" title="Becoming reactive"></a>Becoming reactive</h2><p>到目前为止，这段代码并没有什么特别之处。 但是，如果我们不显式地调用report，我们可以在每次状态更改时自动调用它吗？我们希望确保打印最新的报告，但却不想自己来组织这件事情。</p>
+<p>幸运的是，这正是MobX可以做的，它可以自动执行依赖于state的代码。这样我们的report就会自动更新，就像电子表格中的图表一样。为了实现这一点，TodoStore必须变得可观察，以便MobX可以跟踪正在进行的所有更改。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ObservableTodoStore</span> </span>&#123;</span><br><span class="line">	@observable todos = [];</span><br><span class="line">    @observable pendingRequests = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        mobx.autorun(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>.report));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	@computed get completedTodosCount() &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>.todos.filter(</span><br><span class="line">			todo =&gt; todo.completed === <span class="literal">true</span></span><br><span class="line">		).length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	@computed get report() &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.todos.length === <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"&lt;none&gt;"</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">`Next todo: "<span class="subst">$&#123;<span class="keyword">this</span>.todos[<span class="number">0</span>].task&#125;</span>". `</span> +</span><br><span class="line">			<span class="string">`Progress: <span class="subst">$&#123;<span class="keyword">this</span>.completedTodosCount&#125;</span>/<span class="subst">$&#123;<span class="keyword">this</span>.todos.length&#125;</span>`</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	addTodo(task) &#123;</span><br><span class="line">		<span class="keyword">this</span>.todos.push(&#123;</span><br><span class="line">			task: task,</span><br><span class="line">			completed: <span class="literal">false</span>,</span><br><span class="line">			assignee: <span class="literal">null</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> observableTodoStore = <span class="keyword">new</span> ObservableTodoStore();</span><br></pre></td></tr></table></figure>
+<p>我们将一些属性标记为@observable，以便在这些值发生变化时通知MobX。用@computed修饰计算过程，以标记这些计算过程是从状态派生而来。</p>
+<p>到此为止，我们还没用过<code>pendingRequests</code>和<code>assignee</code>。在构造函数中，我们创建了一个小函数，它自动打印报告。 由于report依赖于已被修饰为observable的todos状态，因此它会及时打印报告：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">observableTodoStore.addTodo(<span class="string">"read MobX tutorial"</span>); <span class="comment">// Next todo: "read MobX tutorial". Progress: 0/1</span></span><br><span class="line">observableTodoStore.addTodo(<span class="string">"try MobX"</span>); <span class="comment">// Next todo: "read MobX tutorial". Progress: 0/2</span></span><br><span class="line">observableTodoStore.todos[<span class="number">0</span>].completed = <span class="literal">true</span>; <span class="comment">// Next todo: "read MobX tutorial". Progress: 1/2</span></span><br><span class="line">observableTodoStore.todos[<span class="number">1</span>].task = <span class="string">"try MobX in own project"</span>; </span><br><span class="line">observableTodoStore.todos[<span class="number">0</span>].task = <span class="string">"grok MobX tutorial"</span>; <span class="comment">// Next todo: "grok MobX tutorial". Progress: 1/2</span></span><br></pre></td></tr></table></figure>
+<p>我们可以看到，<code>report</code>这个reaction，依赖于<code>this.todos.length, this.todos[0].task, this.completedTodosCount</code>，只有当这三个值发生改变时，才会自动调用<code>report</code>。而我们看到上面的第四行代码，其只改变了<code>todos[1].task</code>，并没有改变<code>report</code>所依赖的任何state或reaction，故而没有调用<code>report</code>。</p>
+<h2 id="Making-React-reactive"><a href="#Making-React-reactive" class="headerlink" title="Making React reactive"></a>Making React reactive</h2><p>mobx-react能够使得React的组件自动进行渲染，从而使得组件与其依赖的状态能够同步。</p>
+<p>下面的代码定义了一些React组件，唯一不同的地方就是用了MobX的@observer装饰器，它使得每个组件能够在其相关的数据改变的时候重新渲染。这时我们不再需要<code>setState</code>，也不需要进行状态提升之类。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">@observer</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> store = <span class="keyword">this</span>.props.store;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123; store.report &#125;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">        &#123; store.todos.map(</span><br><span class="line">          (todo, idx) =&gt; <span class="xml"><span class="tag">&lt;<span class="name">TodoView</span> <span class="attr">todo</span>=<span class="string">&#123;</span> <span class="attr">todo</span> &#125; <span class="attr">key</span>=<span class="string">&#123;</span> <span class="attr">idx</span> &#125; /&gt;</span></span></span><br><span class="line"><span class="xml">        ) &#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">        &#123; store.pendingRequests &gt; <span class="number">0</span> ? <span class="xml"><span class="tag">&lt;<span class="name">marquee</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">marquee</span>&gt;</span></span> : <span class="literal">null</span> &#125;</span><br><span class="line">        &lt;button onClick=&#123; <span class="keyword">this</span>.onNewTodo &#125;&gt;New Todo&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;small&gt; (double-click a todo to edit)&lt;/</span>small&gt;</span><br><span class="line">        &lt;RenderCounter /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  onNewTodo = () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.props.store.addTodo(prompt('Enter a new todo:','coffee plz'));</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">@observer</span></span><br><span class="line"><span class="regexp">class TodoView extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    const todo = this.props.todo;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;li onDoubleClick=&#123; this.onRename &#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input</span></span><br><span class="line"><span class="regexp">          type='checkbox'</span></span><br><span class="line"><span class="regexp">          checked=&#123; todo.completed &#125;</span></span><br><span class="line"><span class="regexp">          onChange=&#123; this.onToggleCompleted &#125;</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">        &#123; todo.task &#125;</span><br><span class="line">        &#123; todo.assignee</span><br><span class="line">          ? <span class="xml"><span class="tag">&lt;<span class="name">small</span>&gt;</span>&#123; todo.assignee.name &#125;<span class="tag">&lt;/<span class="name">small</span>&gt;</span></span></span><br><span class="line">          : <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        &lt;RenderCounter /&gt;</span><br><span class="line">      &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  onToggleCompleted = () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const todo = this.props.todo;</span></span><br><span class="line"><span class="regexp">    todo.completed = !todo.completed;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  onRename = () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    const todo = this.props.todo;</span></span><br><span class="line"><span class="regexp">    todo.task = prompt('Task name', todo.task) || todo.task;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  &lt;TodoList store=&#123; observableTodoStore &#125; /</span>&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'reactjs-app'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>我们看到，<code>TodoList</code>组件依赖于前面的<code>observableTodoStore.todos, observableTodoStore.pendingRequests</code>，故而当<code>observableTodoStore</code>中的<code>todos, pendingRequests</code>发生任何改变时，都会引起<code>TodoList</code>的重新渲染。</p>
+<p>在运行下面的代码时，回顾一下上面<code>observableTodoStore</code>的结果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">observableTodoStore.todos = [&#123;</span><br><span class="line">    task: <span class="string">'grok MobX tutorial'</span>,</span><br><span class="line">    completed: <span class="literal">true</span>,</span><br><span class="line">    assignee: <span class="literal">null</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    task: <span class="string">'try MobX in own project'</span>,</span><br><span class="line">    complted: <span class="literal">false</span>,</span><br><span class="line">    assignee: <span class="literal">null</span></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">observableTodooStore.pendingRequests = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>我们来运行一下下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> store = observableTodoStore;</span><br><span class="line">store.todos[<span class="number">0</span>].completed = !store.todos[<span class="number">0</span>].completed;</span><br><span class="line">store.todos[<span class="number">1</span>].task = <span class="string">"Random todo "</span> + <span class="built_in">Math</span>.random();</span><br><span class="line">store.todos.push(&#123; <span class="attr">task</span>: <span class="string">"Find a fine cheese"</span>, <span class="attr">completed</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="comment">// etc etc.. add your own statements here...</span></span><br></pre></td></tr></table></figure>
+<p>一开始，初始界面是：</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/8517669.jpg" alt=""></p>
+<p>当运行完第二行时：</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/62090457.jpg" alt=""></p>
+<p>第三行：</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/88221181.jpg" alt=""></p>
+<p>第四行：</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-9-14/27215063.jpg" alt=""></p>
+<h2 id="Working-with-references"><a href="#Working-with-references" class="headerlink" title="Working with references"></a>Working with references</h2><p>在之前，所有可观察的对象，都是原始类型的值：字符串，boolean值，数值等。但当我们依赖的状态只是一个对其他对象的引用的话，该如何？下面的代码展示了该如何监听一个对象。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> peopleStore = mobx.observable([</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">"Michel"</span> &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">"Me"</span> &#125;</span><br><span class="line">]);</span><br><span class="line">observableTodoStore.todos[<span class="number">0</span>].assignee = peopleStore[<span class="number">0</span>];</span><br><span class="line">observableTodoStore.todos[<span class="number">1</span>].assignee = peopleStore[<span class="number">1</span>];</span><br><span class="line">peopleStore[<span class="number">0</span>].name = <span class="string">"Michel Weststrate"</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/blog-frontend/2018/09/14/十分钟了解MobX/" class="article-date">
+  <time datetime="2018-09-14T11:52:00.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/Mobx/">Mobx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/blog-frontend/2018/12/04/redux浅析/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          redux浅析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog-frontend/2018/07/08/记一个Promise问题/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">记一个Promise问题</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog-frontend/fancybox/jquery.fancybox.css">
+  <script src="/blog-frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog-frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

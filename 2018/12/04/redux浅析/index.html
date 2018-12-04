@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>redux浅析 | Jackie&#39;Front End Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="读完了胡子大哈的React.js小书后，总结一下对redux的新理解吧，主要是store，connect，reducer，provider等内容的一些浅见。 redux的出现，事实上为了解决状态管理的问题。最直接的问题就是，如何在各个组件之间共享状态（即组件间通讯）。 Providerredux应对上述问题的解决方案，就是将这些需要共享的状态放置在根组件的context中（类似于全局变量），其子组">
+<meta name="keywords" content="前端,笔记,JavaScript,React,Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redux浅析">
+<meta property="og:url" content="http://jackieanxis.github.io/2018/12/04/redux浅析/index.html">
+<meta property="og:site_name" content="Jackie&#39;Front End Blog">
+<meta property="og:description" content="读完了胡子大哈的React.js小书后，总结一下对redux的新理解吧，主要是store，connect，reducer，provider等内容的一些浅见。 redux的出现，事实上为了解决状态管理的问题。最直接的问题就是，如何在各个组件之间共享状态（即组件间通讯）。 Providerredux应对上述问题的解决方案，就是将这些需要共享的状态放置在根组件的context中（类似于全局变量），其子组">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-12-04T08:56:17.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redux浅析">
+<meta name="twitter:description" content="读完了胡子大哈的React.js小书后，总结一下对redux的新理解吧，主要是store，connect，reducer，provider等内容的一些浅见。 redux的出现，事实上为了解决状态管理的问题。最直接的问题就是，如何在各个组件之间共享状态（即组件间通讯）。 Providerredux应对上述问题的解决方案，就是将这些需要共享的状态放置在根组件的context中（类似于全局变量），其子组">
+  
+  
+    <link rel="icon" href="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/avatar.png">
+  
+  <link rel="stylesheet" href="/blog-frontend/css/typing.css">
+  <link rel="stylesheet" href="/blog-frontend/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-redux浅析" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+    <div class="mobile-nav">
+      <h1 class="nickname">Jackie Anxis</h1>
+      <a id="menu">
+        &#9776; Menu
+      </a>
+    </div>
+    
+        <nav id="main-nav" class="main-nav nav-left">
+    
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io">Home</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-frontend">FrontEnd</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-cs229">MLcs229</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-papers">PaperReading</a>
+    
+      <a class="main-nav-link" href="https://github.com/JackieAnxis">Github</a>
+    
+      <a class="main-nav-link" href="http://jackieanxis.github.io/blog-others">Others</a>
+    
+      <a class="main-nav-link" href="/blog-frontend/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redux浅析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>读完了胡子大哈的<a href="http://huziketang.mangojuice.top/books/react/" target="_blank" rel="noopener">React.js小书</a>后，总结一下对redux的新理解吧，主要是store，connect，reducer，provider等内容的一些浅见。</p>
+<p>redux的出现，事实上为了解决状态管理的问题。最直接的问题就是，如何在各个组件之间共享状态（即组件间通讯）。</p>
+<h4 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h4><p>redux应对上述问题的解决方案，就是将这些需要共享的状态放置在根组件的<a href="http://huziketang.mangojuice.top/books/react/lesson29" target="_blank" rel="noopener">context</a>中（类似于全局变量），其子组件都能获取到context。</p>
+<p>具体的做法，其实是将Index组件（根组件）包装成Provider组件：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> propTypes = &#123;</span><br><span class="line">        store: PropTypes.object,</span><br><span class="line">        children: PropTypes.any</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> childContextTypes = &#123;</span><br><span class="line">        store: PropTypes.object</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getChildContext() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            store: <span class="keyword">this</span>.props.store</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;&#123;<span class="keyword">this</span>.props.children&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这个Provider组件，为整个组件树添加了store，任何子组件都能获取到store</p>
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;Provider store=&#123; store &#125;&gt;</span><br><span class="line">    &lt;Index /&gt;</span><br><span class="line">&lt;<span class="regexp">/Provider&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><p>store算是组件的状态管理器，也是整个redux的核心。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStore</span>(<span class="params">reducer</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> state = <span class="literal">null</span></span><br><span class="line">	<span class="keyword">const</span> listeners = []</span><br><span class="line">	<span class="keyword">const</span> subscribe = <span class="function">(<span class="params">listener</span>) =&gt;</span> listeners.push(listener)</span><br><span class="line">	<span class="keyword">const</span> getState = <span class="function"><span class="params">()</span> =&gt;</span> state</span><br><span class="line">	<span class="keyword">const</span> dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    	state = reducer(state, action)</span><br><span class="line">    	listeners.forEach(<span class="function"><span class="params">listener</span> =&gt;</span> listener())</span><br><span class="line">  	&#125;</span><br><span class="line">  	dispatch(&#123;&#125;)</span><br><span class="line">  	<span class="keyword">return</span> &#123;</span><br><span class="line">    	getState,</span><br><span class="line">    	dispatch,</span><br><span class="line">    	subscribe</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>store做的事情包括以下三件：</p>
+<ol>
+<li>getState：用于获取当前的状态</li>
+<li>dispatch：修改状态（reducer），并将事件分发给所有监听器</li>
+<li>subscribe：订阅事件，用它来增加新的监听器</li>
+</ol>
+<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h4><p>reducer由用户自己定义，有两个参数，前者是老状态，后者是一个action。</p>
+<p>它做的事情仅仅是：<strong>初始化和计算新的state</strong>；根据action的信息，reducer修改对应的状态，并返回一个新状态（全新的对象，而不是在老对象上修改）。</p>
+<p>举个书中的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> themeReducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!state) <span class="keyword">return</span> &#123;</span><br><span class="line">        themeColor: <span class="string">'red'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'CHANGE_COLOR'</span>:</span><br><span class="line">            <span class="keyword">return</span> &#123; ...state,</span><br><span class="line">                    themeColor: action.themeColor</span><br><span class="line">                   &#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>reducer，按照规定，应该是一个<a href="http://huziketang.mangojuice.top/books/react/lesson32" target="_blank" rel="noopener">纯函数</a>。</p>
+<h4 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h4><p>connect从本质上讲，是一个<a href="http://huziketang.com/books/react/lesson28" target="_blank" rel="noopener">高阶组件</a>，它的作用可以理解为：</p>
+<ol>
+<li>子组件通过connect成为高阶组件后，其内部不用再去对context进行读写（降低依赖性）</li>
+<li>经过connect后，从context的store里面读取到的state/dispatch/props，将会统一以props的状态传入子组件</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> connect = <span class="function">(<span class="params">mapStateToProps, mapDispatchToProps</span>) =&gt;</span> (WrappedComponent) =&gt; &#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Connect</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> contextTypes = &#123;</span><br><span class="line">            store: PropTypes.object</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">constructor</span>() &#123;</span><br><span class="line">            <span class="keyword">super</span>()</span><br><span class="line">            <span class="keyword">this</span>.state = &#123;</span><br><span class="line">                allProps: &#123;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _updateProps() &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123;</span><br><span class="line">                store</span><br><span class="line">            &#125; = <span class="keyword">this</span>.context</span><br><span class="line">            <span class="keyword">let</span> stateProps = mapStateToProps ?</span><br><span class="line">                mapStateToProps(store.getState(), <span class="keyword">this</span>.props) :</span><br><span class="line">                &#123;&#125; <span class="comment">// 防止 mapStateToProps 没有传入</span></span><br><span class="line">            <span class="keyword">let</span> dispatchProps = mapDispatchToProps ?</span><br><span class="line">                mapDispatchToProps(store.dispatch, <span class="keyword">this</span>.props) :</span><br><span class="line">                &#123;&#125; <span class="comment">// 防止 mapDispatchToProps 没有传入</span></span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                allProps: &#123;</span><br><span class="line">                    ...stateProps,</span><br><span class="line">                    ...dispatchProps,</span><br><span class="line">                    ...this.props</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        componentWillMount() &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123;</span><br><span class="line">                store</span><br><span class="line">            &#125; = <span class="keyword">this</span>.context</span><br><span class="line">            <span class="keyword">this</span>._updateProps()</span><br><span class="line">            store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>._updateProps())</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render() &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">WrappedComponent</span> &#123; <span class="attr">...this.state.allProps</span> &#125;/&gt;</span></span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    return Connect</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/blog-frontend/2018/12/04/redux浅析/" class="article-date">
+  <time datetime="2018-12-04T05:04:00.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+
+        </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/Redux/">Redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-frontend/tags/笔记/">笔记</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/blog-frontend/2018/09/14/十分钟了解MobX/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">十分钟了解MobX</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>nothing</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog-frontend/fancybox/jquery.fancybox.css">
+  <script src="/blog-frontend/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog-frontend/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
